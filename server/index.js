@@ -1,6 +1,14 @@
 const express = require('express');
 const { Pool } = require('pg');
 const dotenv = require('dotenv').config();
+
+// Import routes
+const inventory = require('./inventory');
+const roster = require('./roster');
+const dish_list = require('./dish_list');
+const order_history = require('./order_history');
+const cors = require("cors");
+
 // Create express app
 const app = express();
 const port = 3000;
@@ -22,10 +30,7 @@ process.on('SIGINT', function() {
 });
      
 app.set("view engine", "ejs");
-app.get('/', (req, res) => {
-    const data = {name: 'Mario'};
-    res.render('index', data);
-});
+app.use(cors());
 
 app.get('/user', (req, res) => {
     teammembers = []
@@ -36,9 +41,17 @@ app.get('/user', (req, res) => {
                 teammembers.push(query_res.rows[i]);
             }
             const data = {teammembers: teammembers};
-            res.render('user', data);
+            // res.render('user', data);
         });
 });
+
+app.use('/inventory', inventory);
+app.use('/roster', roster);
+app.use('/order_history', order_history);
+app.use('/dish_list', dish_list);
+
+
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
