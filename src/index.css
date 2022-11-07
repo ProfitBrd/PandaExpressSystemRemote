@@ -11,3 +11,109 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*---------------------CSS AFFECTING EVERYTHING---------------------*/
+
+/* Variables for the */
+:root{
+  /*Customer Dish Choice Menu Buttons*/
+  --CustomerDishMenuBackgroundColor: #D1282E;
+  --CustomerDishChoiceButtonTextColor: #241e1e;
+	--CustomerDishChoiceButtonBackgroundColor: #fbeb0b;
+  --CustomerDishChoiceButtonEdgeColor: #241e1e;
+  --CustomerDishChoiceButtonTextHoverColor: #f5f5f5;
+  --CustomerDishChoiceButtonBackgroundHoverColor: #D1282E;
+  --CustomerCurrentOrderBackgroundColor: #f5f5f5;
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar { 
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/*---------------------------------------------------------------*/
+
+/*---------------------CUSTOMER CSS---------------------*/
+.image{
+  background-attachment: fixed;
+  background-size: cover;
+}
+.CustomerMenuGrid{
+  display:grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 40% 28% 28%;
+	grid-gap: 0px 2%;
+	block-size:fit-content;
+  background-image: url('pics/RedBackground.jpg');
+  /* Make root have the background image and cover it */
+  height: 100%
+}
+
+.CustomerMenuDishChoiceButton {
+  background-color: var(--CustomerDishChoiceButtonBackgroundColor);
+  border: none;
+  color: var(--CustomerDishChoiceButtonTextColor);
+  padding: 20%;
+  margin: 10px;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: 20px;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
+}
+.CustomerMenuDishChoiceButton:hover {
+  background-color: var(--CustomerDishChoiceButtonBackgroundHoverColor);
+  color: var(--CustomerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+#Bowl{
+  grid-row: 1 / span 1;
+	grid-column: 2 / span 1;
+}
+#Plate{
+  grid-row: 1 / span 1;
+	grid-column: 3 / span 1;
+}
+#BiggerPlate{
+  grid-row: 2 / span 1;
+	grid-column: 2 / span 1;
+}
+#IndividualItems{
+  grid-row: 2 / span 1;
+	grid-column: 3 / span 1;
+}
+
+
+/* List of all food items ordered */
+.CustomerMenuCurrentOrder{
+  grid-row: 1 / span 2;
+	grid-column: 1 / span 1;
+
+  background-color: var(--CustomerCurrentOrderBackgroundColor);
+  margin: 15px;
+  border: none;
+  color: var(--CustomerDishChoiceButtonTextColor);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: max(1.5vw, 15px);
+  border-radius: 12px;
+  border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
+}
+
+
+/*---------------------------------------------------------------*/
