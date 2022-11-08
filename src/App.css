@@ -1,3 +1,5 @@
+@import url("https://cdn.syncfusion.com/ej2/bootstrap5.css");
+
 .App {
   width: 100vw;
   height: 100vw;
@@ -8,8 +10,35 @@
   padding: 0;
 }
 
+.TitleDot {
+  height: 350px;
+  width: 350px;
+  background-color: black;
+  display:inline-block;
+  margin: 0;
+}
+
+.Parallax {
+  background-image: url('./panda-food-overview.jpeg');
+  min-height: 900px;
+  background-attachment:fixed;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  font-size: 41px;
+  color:white;
+  text-align:center;
+}
+
+.Footer {
+  background-color:black;
+  font-size: 20px;
+  color:white;
+  height:150px;
+}
+
 .Sidebar {
-  height: 100%;
+  height:50vw;
   width: 250px;
   background-color:#30343F;
   float:left;

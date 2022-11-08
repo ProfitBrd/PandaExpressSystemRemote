@@ -5,7 +5,6 @@ import "../App.css";
 
 function Sidebar() {
   return (
-    
     <div className="Sidebar"> 
       <ui className="SidebarList">
         <li className="logo"><img src={Logo}/> </li>

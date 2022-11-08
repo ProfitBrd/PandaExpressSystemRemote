@@ -29,6 +29,6 @@ export const SidebarData = [
   {
     title: "Accessability",
     icon: <SettingsAccessibilityIcon />,
-    link: "/inventory"
+    link: "/accessibility"
   },
 ]

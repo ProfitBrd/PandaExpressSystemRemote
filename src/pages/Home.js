@@ -1,8 +1,15 @@
 import React from 'react'
+import Image from '../panda-food-overview.jpeg'
 
 const Home = () => {
   return (
-    <h1>Home</h1>
+    <div className="Parallax">
+      <div className="TitleDot"> 
+        <h1>
+          Manager View
+        </h1>
+      </div>
+    </div>
   )
 }
 

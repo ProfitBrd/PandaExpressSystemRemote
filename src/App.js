@@ -42,7 +42,7 @@ class App extends Component {
           <Route path="/accessibility" element={<Accessibility/>}/>
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
-      <div>
+      <div className="Footer">
       Footer
       </div>
       </Router>
