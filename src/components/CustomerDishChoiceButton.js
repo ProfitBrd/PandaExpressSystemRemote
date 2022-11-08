@@ -1,4 +1,4 @@
-const CustomerDishChoiceButton = ( { Name, LandingPage }) => {
+const CustomerDishChoiceButton = ( { Name }) => {
   return (
     <div id = "CustomerDishChoiceButton">
       <h1>{Name}</h1>

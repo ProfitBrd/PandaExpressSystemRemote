@@ -47,7 +47,7 @@ body {
 }
 .CustomerMenuGrid{
   display:grid;
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 30%;
 	grid-template-columns: 40% 28% 28%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
@@ -66,7 +66,7 @@ body {
   text-decoration: none;
   text-align: center;
   display: block;
-  font-size: 20px;
+  font-size: max(1.2vw,15px);
   border-radius: 12px;
   transition-duration: 0.4s;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
@@ -91,6 +91,11 @@ body {
 #IndividualItems{
   grid-row: 2 / span 1;
 	grid-column: 3 / span 1;
+}
+#CheckoutScreen{
+  grid-row: 3 / span 1;
+	grid-column: 3 / span 1;
+  font-size: max(1.2vw,10px);
 }
 
 
