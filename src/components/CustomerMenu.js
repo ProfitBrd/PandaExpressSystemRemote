@@ -16,7 +16,7 @@ const CustomerMenu = () => {
         <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => {navigate("Checkout")}}><CustomerDishChoiceButton Name = "Checkout"/></div>
         
         <div class = "CustomerMenuCurrentOrder">
-            <CustomerDishChoiceCurrentOrder /> {/*Removed Divs*/}
+            <CustomerDishChoiceCurrentOrder />
         </div>
     </div>
   )

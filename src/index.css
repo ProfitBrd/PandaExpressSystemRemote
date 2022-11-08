@@ -120,5 +120,63 @@ body {
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
 }
 
+/* Checkout Screen */
+.CheckoutScreen{
+  display:grid;
+	grid-template-rows: 1fr 50px 25%;
+	grid-template-columns: 13% 33% 33% 13%;
+	grid-gap: 0px 2%;
+	block-size:fit-content;
+  background-image: url('pics/RedBackground.jpg');
+}
+.CustomerCheckoutOrder{
+  grid-row: 1 / span 1;
+	grid-column: 2 / span 2;
+
+  background-color: var(--CustomerCurrentOrderBackgroundColor);
+  margin: 15px;
+  border: none;
+  color: var(--CustomerDishChoiceButtonTextColor);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: max(1.5vw, 15px);
+  border-radius: 12px;
+  border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
+}
+.CustomerCheckoutButton {
+  background-color: var(--CustomerDishChoiceButtonBackgroundColor);
+  border: none;
+  color: var(--CustomerDishChoiceButtonTextColor);
+  padding: 0%;
+  margin: 10px;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
+}
+.CustomerCheckoutButton:hover {
+  background-color: var(--CustomerDishChoiceButtonBackgroundHoverColor);
+  color: var(--CustomerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+#Checkout{
+  grid-row: 3 / span 1;
+	grid-column: 2 / span 1;
+}
+#GoBack{
+  grid-row: 3 / span 1;
+	grid-column: 3 / span 1;
+}
+
+
 
 /*---------------------------------------------------------------*/
