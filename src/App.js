@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import logo from './logo.svg';
 import './App.css';
-import { json } from "express";
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = { apiResponse: "t" };
+    this.callAPIAsync();
   }
 
   callAPI = () => {
       fetch("http://localhost:3000/roster?id=2")
           .then(res => res.text())
           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
+  }
+
+  callAPIAsync = async () => {
+    return console.log((await fetch("http://localhost:3000/roster?id=2")).text());
   }
 
   render() {  
