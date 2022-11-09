@@ -1,5 +1,8 @@
 //rafce
 import React, { Component } from "react";
+import logo from './logo.svg';
+import './App.css';
+import { json } from "express";
 import './index.css';
 import CustomerMenu from "./components/CustomerMenu";
 import CustomerLandingPage from "./components/CustomerLandingPage";

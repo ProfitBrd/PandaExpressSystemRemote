@@ -7,6 +7,7 @@ const inventory = require('./inventory');
 const roster = require('./roster');
 const dish_list = require('./dish_list');
 const order_history = require('./order_history');
+const report = require('./report');
 const cors = require("cors");
 
 // Create express app
@@ -49,6 +50,7 @@ app.use('/inventory', inventory);
 app.use('/roster', roster);
 app.use('/order_history', order_history);
 app.use('/dish_list', dish_list);
+app.use('/report', report);
 
 
 
