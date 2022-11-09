@@ -7,17 +7,60 @@ import '../index.css';
 
 const CustomerMenu = () => {
   let navigate = useNavigate();
+
+  const createBowl = () => {
+    var orderArray = [];
+    
+    var dishArray = ["bowl"];
+    var entreeArray = [];
+    var sidesArray = [];
+    var appetizers = [];
+    orderArray.push(dishArray, entreeArray, sidesArray, appetizers);
+    var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
+    mylistoforders.push(orderArray);
+    localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
+    navigate("Checkout")
+  }
+  const createPlate = () => {
+    var orderArray = [];
+    
+    var dishArray = ["plate"];
+    var entreeArray = [];
+    var sidesArray = [];
+    var appetizers = [];
+    orderArray.push(dishArray, entreeArray, sidesArray, appetizers);
+    var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
+    mylistoforders.push(orderArray);
+    localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
+    navigate("Checkout")
+  }
+  const createBiggerPlate = () => {
+    var orderArray = [];
+    
+    var dishArray = ["bigger plate"];
+    var entreeArray = [];
+    var sidesArray = [];
+    var appetizers = [];
+    orderArray.push(dishArray, entreeArray, sidesArray, appetizers);
+    var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
+    mylistoforders.push(orderArray);
+    localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
+    navigate("Checkout")
+  }
+
   return (
     <div class = "CustomerMenuGrid">
-        <div class = "CustomerMenuDishChoiceButton" id = "Bowl"><CustomerDishChoiceButton Name = "Bowl"/></div>
-        <div class = "CustomerMenuDishChoiceButton" id = "Plate"><CustomerDishChoiceButton Name = "Plate"/></div>
-        <div class = "CustomerMenuDishChoiceButton" id = "BiggerPlate"><CustomerDishChoiceButton Name = "Bigger Plate"/></div>
-        <div class = "CustomerMenuDishChoiceButton" id = "IndividualItems"><CustomerDishChoiceButton Name = "Indiv. Items"/></div>
-        <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => {navigate("Checkout")}}><CustomerDishChoiceButton Name = "Checkout"/></div>
-        
-        <div class = "CustomerMenuCurrentOrder">
+      <div class = "CustomerMenuCurrentOrder">
             <CustomerDishChoiceCurrentOrder />
-        </div>
+      </div>
+
+      <div class = "CustomerMenuDishChoiceButton" id = "Bowl" onClick={() => {createBowl()}} ><CustomerDishChoiceButton Name = "Bowl"/></div>
+      <div class = "CustomerMenuDishChoiceButton" id = "Plate" onClick={() => {createPlate()}}><CustomerDishChoiceButton Name = "Plate"/></div>
+      <div class = "CustomerMenuDishChoiceButton" id = "BiggerPlate" onClick={() => {createBiggerPlate()}}><CustomerDishChoiceButton Name = "Bigger Plate"/></div>
+      {/* <div class = "CustomerMenuDishChoiceButton" id = "IndividualItems"><CustomerDishChoiceButton Name = "Indiv. Items"/></div> */}
+      <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => {navigate("Checkout")}}><CustomerDishChoiceButton Name = "Checkout"/></div>
+        
+        
     </div>
   )
 }
