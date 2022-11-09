@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from './pandaLogo.png';
 import "./header.css";
-import { useNavigate } from 'react-router-dom';
+import "./menuContainer.css";
+import { useNavigate, Link } from 'react-router-dom';
 
 
 
@@ -11,7 +12,7 @@ function header() {
     <div className="header">
         <img src={Logo} className="img" width="25%" />
         <div className="addToCart">
-          <button onClick= "/CustomerLandingPage" > Back to Cart </button>;
+        <button><Link to="/CustomerMenu" className="optionBtn"> Back to Cart </Link></button>;
         </div>
 
     </div>

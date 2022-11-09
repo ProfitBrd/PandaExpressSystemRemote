@@ -24,8 +24,8 @@ const CustomerCheckout = () => {
     <div class = "CheckoutScreen">
         <div class = "CustomerCheckoutOrder"><CustomerDishChoiceCurrentOrder /></div>
         <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerDishChoiceButton Name = "Checkout" /></div>
-        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerTotalPrice /></div>
+        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/CustomerMenu")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
+        {/* <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerTotalPrice /></div> */}
     </div>
     )
     

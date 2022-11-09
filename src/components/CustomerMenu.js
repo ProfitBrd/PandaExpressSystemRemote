@@ -19,7 +19,7 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("Checkout")
+    navigate("ordering")
   }
   const createPlate = () => {
     var orderArray = [];
@@ -32,7 +32,7 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("Checkout")
+    navigate("ordering")
   }
   const createBiggerPlate = () => {
     var orderArray = [];
@@ -45,7 +45,7 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("Checkout")
+    navigate("ordering")
   }
 
   return (

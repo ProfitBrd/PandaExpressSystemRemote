@@ -30,10 +30,10 @@ function menuContainer() {
       <div className="menuContainer">
         <div className="menuItems">
               <div className="options">
-                <Link to="/entrees" className="optionBtn"> Entrees </Link>
-                <Link to="/sides" className="optionBtn"> Sides </Link>
-                <Link to="/apps" className="optionBtn"> Appetizers </Link>
-                <Link to="/" className="optionBtn"> A la Carte </Link>
+                <Link to="/CustomerMenu/entrees" className="optionBtn"> Entrees </Link>
+                <Link to="/CustomerMenu/sides" className="optionBtn"> Sides </Link>
+                <Link to="/CustomerMenu/apps" className="optionBtn"> Appetizers </Link>
+                {/* <Link to="/" className="optionBtn"> A la Carte </Link> */}
               </div>
               <main>
                 <ItemBox itemImg = {hsChicken} className = "img" itemName = {"honey_seasame_chicken"} itemPrice = {"$1"} itemType = {"1"} />
