@@ -23,7 +23,9 @@ select {
   color:white;
 }
 
-form {
+.App-header {
+  background-color: #b10000;
+  min-height: 100vh;
   display: flex;
   color:black;
   align-items: center;
@@ -220,5 +222,4 @@ img {
 .row #title {
   flex: 70%;
 }
-
 
