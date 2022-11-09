@@ -16,7 +16,6 @@ import ErrorPage from './pages/ErrorPage';
           <button onClick={this.callAPI}>Make Call</button>
         </header>
 */
-
 class App extends Component {
 
   constructor(props) {
