@@ -1,9 +1,17 @@
-import React from "react";
+import React from 'react'
 
-export default function Accessability() {
+const Accessibility = () => {
   return (
-    <div>
-      <h1>Accessability</h1>
+    <div className="Parallax-Accessibility">
+      <div className="TitleDot-Accessibility"> 
+        <h1>
+          Accessibility Settings
+        </h1>
+      <form>
+      </form>
+      </div>
     </div>
-  );
-};
+  )
+}
+
+export default Accessibility
