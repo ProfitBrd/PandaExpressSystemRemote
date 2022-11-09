@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 });
 
 async function getItem(id) {
-    const query = `SELECT * FROM inventory where item_id = ${id}`;
+    const query = `SELECT * FROM inventory where item_name = ${id}`; // <--- NATHAN I CHANGED THIS from item_id to item_name <----
     console.log(`Performing query: ${query}`);
     let query_res = await pool.query(query);
     return query_res.rows[0];
@@ -36,7 +36,7 @@ async function getItem(id) {
 
 
 async function getDish(id) {
-    const query = `SELECT * FROM dish_list where dish_id = ${id}`;
+    const query = `SELECT * FROM dish_list where dish_id = ${id}`; 
     console.log(`Performing query: ${query}`);
     let query_res = await pool.query(query);
     return query_res.rows[0];
