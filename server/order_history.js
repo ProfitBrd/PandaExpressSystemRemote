@@ -16,7 +16,7 @@ const pool = new Pool({
 
 router.get('/', (req, res) => {
     let id = req.query.id;
-    const query = `SELECT * FROM dish_list where dish_id = ${id}`;
+    const query = `SELECT * FROM order_history where transaction_id = ${id}`;
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
@@ -56,6 +56,7 @@ router.get('/nextID', (req, res) => {
         .query(query)
         .then(query_res => {
             const data = query_res.rows[0];
+            data.max += 1;
             res.send(data);
             //res.render('user', data);
         });

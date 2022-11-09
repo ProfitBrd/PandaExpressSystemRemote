@@ -92,8 +92,9 @@ router.get('/nextID', (req, res) => {
     pool
         .query(query)
         .then(query_res => {
-            res.status(200).end();
-            //res.render('user', data);
+            const data = query_res.rows[0];
+            data.max += 1;
+            res.send(data);
         });
 });
 module.exports = router;
