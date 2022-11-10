@@ -2,6 +2,20 @@ import React, { Component } from "react";
 import logo from './logo.svg';
 import './App.css';
 
+default export App(props) {
+
+  function addOrder() {
+
+  }
+  
+  return (
+    daskjfjladsfasd
+    fksadl;\dfkadsl
+    fk;lksd
+  )
+}
+
+
 class App extends Component {
 
   constructor(props) {
@@ -10,14 +24,24 @@ class App extends Component {
     this.callAPIAsync();
   }
 
-  callAPI = () => {
-      fetch("http://localhost:3000/roster?id=2")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
-  }
+  // callAPI = () => {
+  //     fetch("http://localhost:3000/roster?id=2")
+  //     .then(updateUI(res.item_id));
+  //         .then(res => res.text())
+  //         .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
+  // }
+
+  // takes whatever is returned by the previous statement as input
+  // .then(function whatever(res) {
+  //   console.log(res);
+  // })
+
+  // onClick={() => console.log()}
+
 
   callAPIAsync = async () => {
-    return console.log((await fetch("http://localhost:3000/roster?id=2")).text());
+    // console.log((await fetch("http://localhost:3000/roster?id=2")).text());
+    return (await fetch("http://localhost:3000/roster?id=2")).text();
   }
 
   render() {  

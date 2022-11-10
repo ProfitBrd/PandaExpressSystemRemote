@@ -34,6 +34,8 @@ router.get('/', (req, res) => {
         });
 });
 
+
+// http://localhost:3000/inventory/subtract?id=4&servings=1
 router.get('/subtract', (req, res) => {
     let id = req.query.id;
     let servings = req.query.servings;
