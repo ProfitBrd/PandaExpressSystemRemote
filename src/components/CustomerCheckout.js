@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomerDishChoiceCurrentOrder from "./CustomerDishChoiceCurrentOrder";
-import '../index.css';
+import '../index2.css';
 import CustomerDishChoiceButton from './CustomerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';
 import CustomerTotalPrice from './CustomerTotalPrice';

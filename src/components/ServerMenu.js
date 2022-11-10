@@ -1,11 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import CustomerDishChoiceButton from "./CustomerDishChoiceButton";
-import CustomerDishChoiceCurrentOrder from "./CustomerDishChoiceCurrentOrder";
-import '../index2.css';
+import ServerDishChoiceButton from "./ServerDishChoiceButton";
+import ServerDishChoiceCurrentOrder from "./ServerDishChoiceCurrentOrder";
+import '../index.css';
 
 
-const CustomerMenu = () => {
+const ServerMenu = () => {
   let navigate = useNavigate();
 
   const createBowl = () => {
@@ -19,8 +19,9 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("ordering")
+    navigate("/ServerMenu/OrderSelect")
   }
+
   const createPlate = () => {
     var orderArray = [];
     
@@ -32,7 +33,7 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("ordering")
+    navigate("/ServerMenu/OrderSelect")
   }
   const createBiggerPlate = () => {
     var orderArray = [];
@@ -45,23 +46,22 @@ const CustomerMenu = () => {
     var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
     mylistoforders.push(orderArray);
     localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-    navigate("ordering")
+    navigate("/ServerMenu/OrderSelect")
   }
 
   return (
-    <div class = "CustomerMenuGrid">
-      <div class = "CustomerMenuCurrentOrder">
-            <CustomerDishChoiceCurrentOrder />
-      </div>
 
-      <div class = "CustomerMenuDishChoiceButton" id = "Bowl" onClick={() => {createBowl()}} ><CustomerDishChoiceButton Name = "Bowl"/></div>
-      <div class = "CustomerMenuDishChoiceButton" id = "Plate" onClick={() => {createPlate()}}><CustomerDishChoiceButton Name = "Plate"/></div>
-      <div class = "CustomerMenuDishChoiceButton" id = "BiggerPlate" onClick={() => {createBiggerPlate()}}><CustomerDishChoiceButton Name = "Bigger Plate"/></div>
-      <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => {navigate("Checkout")}}><CustomerDishChoiceButton Name = "Checkout"/></div>
-        
-        
+    <div class = "ServerMenuGrid">
+        <div class = "ServerMenuDishChoiceButton" id = "BowlScreen" onClick={() => {createBowl()}}><ServerDishChoiceButton Name = "Bowl"/></div>
+        <div class = "ServerMenuDishChoiceButton" id = "PlateScreen" onClick={() => {createPlate()}}><ServerDishChoiceButton Name = "Plate"/></div>
+        <div class = "ServerMenuDishChoiceButton" id = "BiggerPlateScreen" onClick={() => {createBiggerPlate()}}><ServerDishChoiceButton Name = "Bigger Plate"/></div>
+        <div class = "CheckoutButton" id = "ServerCheckoutScreen" onClick={() => {navigate("/ServerMenu/Checkout")}}><ServerDishChoiceButton Name = "Checkout"/></div>
+        <div class = "ServerMenuCurrentOrder">
+            <ServerDishChoiceCurrentOrder />
+        </div>
     </div>
+    
   )
 }
 
-export default CustomerMenu
+export default ServerMenu
