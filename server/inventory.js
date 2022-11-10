@@ -19,27 +19,25 @@ router.get('/', (req, res) => {
     let name = req.query.name;
     let query;
     if(id){
-        query = `SELECT * FROM inventory where item_id = ` + id;
+        query = `SELECT * FROM inventory where item_id = ${id}`;
     }
     else {
-        query = `SELECT * FROM inventory where item_name = ` + name;
+        query = `SELECT * FROM inventory where item_name = '${name}'`;
     }
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
         .then(query_res => {
-            const data = {item: query_res.rows[0]};
+            const data = query_res.rows[0];
             res.send(data);
             //res.render('user', data);
         });
 });
 
-
-// http://localhost:3000/inventory/subtract?id=4&servings=1
 router.get('/subtract', (req, res) => {
     let id = req.query.id;
     let servings = req.query.servings;
-    const query = `UPDATE inventory SET servings = = servings - ${servings} WHERE item_id=${id}`
+    const query = `UPDATE inventory SET servings = servings - ${servings} WHERE item_id=${id}`
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
@@ -95,8 +93,7 @@ router.get('/nextID', (req, res) => {
         .query(query)
         .then(query_res => {
             const data = query_res.rows[0];
-            data.max += 1;
-            res.send(data);
+            res.send({"nextID": data.max + 1});
         });
 });
 module.exports = router;

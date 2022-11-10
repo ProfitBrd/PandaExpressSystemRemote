@@ -56,8 +56,7 @@ router.get('/nextID', (req, res) => {
         .query(query)
         .then(query_res => {
             const data = query_res.rows[0];
-            data.max += 1;
-            res.send(data);
+            res.send({"nextID": data.max + 1});
             //res.render('user', data);
         });
 });
