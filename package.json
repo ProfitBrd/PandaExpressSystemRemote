@@ -18,15 +18,9 @@
     "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-<<<<<<< HEAD
-    "react-scripts": "4.0.3",
-    "web-vitals": "^2.1.4",
-    "zlib": "^1.0.5"
-=======
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
->>>>>>> 41bf4f3f0717dc8c4a7b30383aa1725f965833c5
   },
   "scripts": {
     "start": "react-scripts start",
