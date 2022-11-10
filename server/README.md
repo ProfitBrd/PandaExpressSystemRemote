@@ -12,6 +12,11 @@ Route: /dish_list?id={id}
 Ex: http://localhost:3000/dish_list?id=3
 Ex Response: {"dish_id":3,"dish_name":"bigger_plate","number_entrees":3,"number_sides":1,"price":"9.65"}
 
+#### Get Full Dish List
+Route: /dish_list/summary
+Ex: http://localhost:3000/dish_list/summary
+Ex Response: \[{"dish_id":3,"dish_name":"bigger_plate","number_entrees":3,"number_sides":1,"price":"9.65"},...\]
+
 #### Order Price Query By Name
 Route: /dish_list/price?dish_id={id}&item={item_name}&item={item_name}...
 Ex: http://localhost:3000/dish_list/price?dish_id=1&item=honey_seasame_chicken&item=black_pepper_angus_steak&item=fried_rice
@@ -75,12 +80,22 @@ Route: /order_history/nextID
 Ex: http://localhost:3000/order_history/nextID
 Ex Response: {"nextID":5538}
 
+#### Get Full Order History
+Route: /order_history/summary
+Ex: http://localhost:3000/order_history/summary
+Ex Response: \[{"transaction_id":3,"employee_id":1,"date":"2022-10-01T05:00:00.000Z","type_of_dish":"bigger plate","entree_dish":"honey_seasame_chicken,orange_chicken","entree_amt_servings":"2,4","side_ingredients":"brown_steamed_rice","side_amt_servings":5,"appetizer_ingredients":"chicken_egg_roll","appetizer_amt_servings":1,"price":"13.203985300"},...\]
+
 ### Roster
 
 #### Single Employee Query
 Route: /roster?id={id}
 Ex: http://localhost:3000/roster?id=3
 Ex Response: {"employee_id":3,"employee_name":"Jackie Wells","is_manager":false}
+
+#### Get Full Roster
+Route: /roster/summary
+Ex: http://localhost:3000/roster/summary
+Ex Response: \[{"employee_id":3,"employee_name":"Jackie Wells","is_manager":false},...\]
 
 #### Delete Employee
 Route: /roster/delete?name={employee_name}

@@ -48,6 +48,22 @@ async function getDish(id) {
     return query_res.rows[0];
 }
 
+router.get('/summary', (req, res) => {
+    items = [];
+    const query = `SELECT * FROM dish_list`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                items.push(query_res.rows[i]);
+            }
+            const data = items;
+            res.send(data);
+            //res.render('user', data);
+        });
+});
+
 // http://localhost:3000/dish_list/price?dish_id=1&item=1&item=2&item=14&item=15&item=20
 // http://localhost:3000/dish_list/price?dish_id=1&item=honey_seasame_chicken&item=black_pepper_angus_steak&item=fried_rice
 router.get('/price', async (req, res) => {

@@ -53,6 +53,22 @@ router.get('/add', (req, res) => {
         });
 });
 
+router.get('/summary', (req, res) => {
+    items = [];
+    const query = `SELECT * FROM roster`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                items.push(query_res.rows[i]);
+            }
+            const data = items;
+            res.send(data);
+            //res.render('user', data);
+        });
+});
+
 router.get('/nextID', (req, res) => {
     const query = `SELECT max(employee_id) FROM roster`;
     console.log(`Performing query: ${query}`);

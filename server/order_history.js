@@ -60,4 +60,20 @@ router.get('/nextID', (req, res) => {
             //res.render('user', data);
         });
 });
+
+router.get('/summary', (req, res) => {
+    items = [];
+    const query = `SELECT * FROM order_history`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                items.push(query_res.rows[i]);
+            }
+            const data = items;
+            res.send(data);
+            //res.render('user', data);
+        });
+});
 module.exports = router;
