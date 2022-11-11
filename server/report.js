@@ -97,4 +97,26 @@ router.get('/sales', (req, res) => {
         });
 });
 
+async function whatSellsTogether(startDate, endDate) {
+    const salesMap = new Map();
+    const query = `SELECT entree_dish, side_ingredients FROM order_history WHERE date >= '${startDate}' AND date   <= '${endDate}'`;
+    console.log(`Performing query: ${query}`);
+    let query_res = await pool.query(query);
+
+    for (let i = 0; i < query_res.rowCount; i++){
+        const row = await query_res.rows[i];
+        const description = `Entree: ${row.entree_dish}, Side: ${row.side_ingredients}`;
+        salesMap.set(description, salesMap.get(description) + 1 || 1);
+    }
+    console.log(salesMap);
+    return [...salesMap.entries()].sort((a, b) => b[1] - a[1]); // sort by key values
+}
+
+router.get('/sells_together', async (req, res) => {
+    const startDate = req.query.startDate;
+    const endDate = req.query.endDate;
+    res.send(await whatSellsTogether(startDate, endDate));
+});
+// TODO: sales by item
+
 module.exports = router;
