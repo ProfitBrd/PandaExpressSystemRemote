@@ -14,18 +14,6 @@ const pool = new Pool({
     ssl: {rejectUnauthorized: false}
 });
 
-router.get('/sales', (req, res) => {
-    let id = req.query.id;
-    const query = `SELECT type_of_dish, count(*), SUM(price) FROM order_history GROUP BY type_of_dish ORDER BY count(*) DESC LIMIT 10`;
-    console.log(`Performing query: ${query}`);
-    pool
-        .query(query)
-        .then(query_res => {
-            const data = query_res.rows[0];
-            res.send(data);
-        });
-});
-
 // function getServingsUsed(startDate, endDate) {
 
 // }
@@ -34,15 +22,30 @@ router.get('/sales', (req, res) => {
 
 // }
 
-router.get('/excess', (req, res) => {
-    let id = req.query.id;
+router.get('/restock', (req, res) => {
+    const query = `SELECT item_name, minimum_amount, servings, restock_quantity FROM inventory`;
+    console.log(`Performing query: ${query}`);
+    let items = []
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                let item = query_res.rows[i];
+                if(item.servings < item.minimum_amount)
+                    items.push(item);
+            }
+            res.send(items);
+        });
+});
+
+
+router.get('/sales', (req, res) => {
     const query = `SELECT type_of_dish, count(*), SUM(price) FROM order_history GROUP BY type_of_dish ORDER BY count(*) DESC LIMIT 10`;
     console.log(`Performing query: ${query}`);
     pool
         .query(query)
         .then(query_res => {
-            const data = query_res.rows[0];
-            res.send(data);
+            res.send(query_res.rows);
         });
 });
 
