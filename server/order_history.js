@@ -47,6 +47,8 @@ router.get('/add', (req, res) => {
             res.status(200).end();
             //res.render('user');
         });
+
+    // TODO: update inventory amounts
 });
 
 router.get('/nextID', (req, res) => {
@@ -56,7 +58,22 @@ router.get('/nextID', (req, res) => {
         .query(query)
         .then(query_res => {
             const data = query_res.rows[0];
-            data.max += 1;
+            res.send({"nextID": data.max + 1});
+            //res.render('user', data);
+        });
+});
+
+router.get('/summary', (req, res) => {
+    items = [];
+    const query = `SELECT * FROM order_history`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                items.push(query_res.rows[i]);
+            }
+            const data = items;
             res.send(data);
             //res.render('user', data);
         });
