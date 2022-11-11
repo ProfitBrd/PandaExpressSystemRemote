@@ -47,6 +47,8 @@ router.get('/add', (req, res) => {
             res.status(200).end();
             //res.render('user');
         });
+
+    // TODO: update inventory amounts
 });
 
 router.get('/nextID', (req, res) => {

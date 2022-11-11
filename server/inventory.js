@@ -34,6 +34,8 @@ router.get('/', (req, res) => {
         });
 });
 
+// TODO: add new item to inventory
+
 router.get('/subtract', (req, res) => {
     let id = req.query.id;
     let servings = req.query.servings;

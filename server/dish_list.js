@@ -91,15 +91,15 @@ router.get('/price', async (req, res) => {
         let item = itemList[i];
         if(item.food_type === 'entree') entrees.push(item);
         else if(item.food_type === 'side') sides.push(item);
-        appetizers.push(item);
+        else appetizers.push(item);
     }
 
-    for(let i = 0; i < entrees.length - dish.number_entrees; i++)
+    for(let i = dish.number_entrees; i < entrees.length; i++)
         finalPrice += Number(entrees[i].item_price);
-    for(let i = 0; i < sides.length - dish.number_sides; i++)
-        finalPrice += Number(entrees[i].item_price);
-    for(let i = 0; i < entrees.length; i++)
-        finalPrice += Number(entrees[i].item_price);
+    for(let i = dish.number_sides; i < sides.length; i++)
+        finalPrice += Number(sides[i].item_price);
+    for(let i = 0; i < appetizers.length; i++)
+        finalPrice += Number(appetizers[i].item_price);
 
     res.send({"price": finalPrice});
 })
@@ -129,15 +129,15 @@ router.get('/price_by_id', async (req, res) => {
         let item = itemList[i];
         if(item.food_type === 'entree') entrees.push(item);
         else if(item.food_type === 'side') sides.push(item);
-        appetizers.push(item);
+        else appetizers.push(item);
     }
 
-    for(let i = 0; i < entrees.length - dish.number_entrees; i++)
+    for(let i = dish.number_entrees; i < entrees.length; i++)
         finalPrice += Number(entrees[i].item_price);
-    for(let i = 0; i < sides.length - dish.number_sides; i++)
-        finalPrice += Number(entrees[i].item_price);
-    for(let i = 0; i < entrees.length; i++)
-        finalPrice += Number(entrees[i].item_price);
+    for(let i = dish.number_sides; i < sides.length; i++)
+        finalPrice += Number(sides[i].item_price);
+    for(let i = 0; i < appetizers.length; i++)
+        finalPrice += Number(appetizers[i].item_price);
 
     res.send({"price": finalPrice});
 })
