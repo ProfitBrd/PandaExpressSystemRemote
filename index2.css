@@ -1,0 +1,365 @@
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*---------------------CSS AFFECTING EVERYTHING---------------------*/
+
+/* Variables for the */
+:root{
+  /*Server Dish Choice Menu Buttons*/
+  --ServerDishMenuBackgroundColor: #801418;
+  --ServerDishChoiceButtonTextColor: #241e1e;
+	--ServerDishChoiceButtonBackgroundColor: #ccbf12;
+  --ServerDishChoiceButtonEdgeColor: #241e1e;
+  --ServerDishChoiceButtonTextHoverColor: #f5f5f5;
+  --ServerDishChoiceButtonBackgroundHoverColor: #801418;
+  --ServerCurrentOrderBackgroundColor: #f5f5f5;
+  --EntreeButtonColor: #f5f5f5;
+  --SideButtonColor: #076306;
+  --AppButtonColor: #6b5835;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar { 
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  background-color: #801418;
+}
+
+/*---------------------------------------------------------------*/
+
+/*-------------------Home Page CSS--------------------*/
+
+.homeLogo{
+  content: url('panda-logo.png');
+  max-width: 25%;
+  max-height: 25%;
+  align-self: center;
+}
+
+.HomePageScreen{
+  /*background-image: url('pics/RedBackground.jpg');*/
+  background-color: #801418;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.HomePageButton{
+  align-self: center;
+  background-color: var(--ServerDishChoiceButtonTextHoverColor);
+  color: var(--ServerDishChoiceButtonTextColor);
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  border-radius: 12px;
+  margin-top: 1%;
+  width: 25%;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+.HomePageButton:hover{
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  border-radius: 50px;
+  width: 20%;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/*---------------------Server CSS---------------------*/
+.image{
+  background-attachment: fixed;
+  background-size: cover;
+}
+.ServerMenuGrid{
+  display:grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+	grid-gap: 0px 2%;
+	block-size: fit-content;
+  height: 80%;
+}
+
+.ServerMenuDishChoiceButton {
+  background-color: var(--ServerDishChoiceButtonBackgroundColor);
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  color: var(--ServerDishChoiceButtonTextColor);
+  padding: 5%;
+  margin-top: 4%;
+  margin-right: 2%;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
+.ServerMenuDishChoiceButton:hover {
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: pointer;
+}
+#BowlScreen{
+  grid-row: 1 / span 1;
+	grid-column: 2 / span 1;
+  max-height: 33.33%;
+}
+#PlateScreen{
+  grid-row: 2 / span 1;
+	grid-column: 2 / span 1;
+  max-height: 33.33%;
+}
+#BiggerPlateScreen{
+  grid-row: 3 / span 1;
+	grid-column: 2 / span 1;
+  max-height: 33.33%;
+  margin-bottom: 0%;
+}
+
+.CheckoutButton {
+  background-color: var(--ServerDishChoiceButtonBackgroundColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+}
+.CheckoutButton:hover {
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: pointer;
+}
+#ServerCheckoutScreen{
+  /*grid-row: 4 / span 1;
+	grid-column: 1 / span 1;*/
+  font-size: max(1.2vw,10px);
+  max-height: auto;
+  margin-top: 1%;
+  margin-left: 2%;
+  margin-right: 0%;
+  margin-bottom: 0%;
+}
+
+
+/* List of all food items ordered */
+.ServerMenuCurrentOrder{
+  grid-row: 1 / span 3;
+	grid-column: 1 / span 1;
+
+  background-color: var(--ServerCurrentOrderBackgroundColor);
+  margin-top: 2%;
+  margin-left: 2%;
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  max-height: 100%;
+}
+
+
+/* Checkout Screen */
+.CheckoutScreen{
+  background-image: url('pics/RedBackground.jpg');
+}
+.ServerCheckoutOrder{
+  background-color: var(--ServerCurrentOrderBackgroundColor);
+  border: none;
+  position: fixed;
+  color: var(--ServerDishChoiceButtonTextColor);
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  position: fixed;
+  top: 2%;
+  left: 25%;
+  right: 25%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  max-width: 50%;
+  height: 75%;
+}
+.ServerCheckoutButton {
+  background-color: var(--ServerDishChoiceButtonBackgroundColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  padding: 0%;
+  margin: 2%;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  width: 30%;
+  position: fixed;
+}
+.ServerCheckoutButton:hover {
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+#ServerCheckout{
+  bottom: 2%;
+  right: 0%;
+}
+#ServerGoBack{
+  bottom: 2%;
+  left: 0%;
+}
+
+/*Item Buttons*/
+.NavButton {
+  background-color: var(--ServerDishChoiceButtonBackgroundColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  padding: 0%;
+  margin: 2%;
+  margin-left: none;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  width: 30%;
+  position: fixed;
+}
+.NavButton:hover {
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+#ItemAdd{
+  bottom: 2%;
+  right: 0%;
+}
+
+.EntreeButton{
+  background-color: var(--EntreeButtonColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  padding: 0%;
+  margin: 2%;
+  min-width: 10%;
+}
+.EntreeButton:hover{
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+
+.SideButton{
+  background-color: var(--SideButtonColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  padding: 0%;
+  margin: 2%;
+  min-width: 10%;
+}
+.SideButton:hover{
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+
+.AppButton{
+  background-color: var(--AppButtonColor);
+  border: none;
+  color: var(--ServerDishChoiceButtonTextColor);
+  text-decoration: none;
+  text-align: center;
+  border-radius: 12px;
+  transition-duration: 0.4s;
+  border: 2px solid var(--ServerDishChoiceButtonEdgeColor);
+  padding: 0%;
+  margin: 2%;
+  min-width: 10%;
+}
+.AppButton:hover{
+  background-color: var(--ServerDishChoiceButtonBackgroundHoverColor);
+  color: var(--ServerDishChoiceButtonTextHoverColor);
+  cursor: default;
+}
+
+/*Item Screen*/
+.ItemScreen{
+  background-image: url('pics/RedBackground.jpg');
+}
+
+#ItemButtons{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+}
+
+/*Bowl Screen*/
+.BowlItems{
+  background-image: url('pics/RedBackground.jpg');
+}
+
+#BowlButtons{
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-evenly;
+  align-items: center;
+  height: auto;
+}
+
+/*---------------------------------------------------------------*/
