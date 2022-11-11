@@ -1,16 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-var callAPIAsyncNameToID = async (itemName) => {
-    (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
-}
+// var callAPIAsyncNameToID = async (itemName) => {
+//     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
+// }
 
 var callAPIAsyncGetPrice = async (dishId, idString) => {
     (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).text();
 }
 
-const returnPrice = (MyListOfOrders) => {
+const returnPrice = async (MyListOfOrders) => {
     var totalPrice = 0;
-    console.log("YO" + MyListOfOrders);
+    console.log("List sent to function: " + MyListOfOrders);
     for (var i = 0; i < MyListOfOrders.length; i++){
         var dishtype = MyListOfOrders[i][0][0];
         var dish_id = 1;
@@ -31,26 +31,45 @@ const returnPrice = (MyListOfOrders) => {
                 }
                 else{
                     //push all the id's
-                    everythingInTheDish.push(callAPIAsyncNameToID(MyListOfOrders[i][j][k]));
+                    everythingInTheDish.push(MyListOfOrders[i][j][k]);
                 }
             }
         }
-        var resultString = "";
-        for (var i = 0; i < everythingInTheDish.length; i++){
-            resultString += "&item=" + everythingInTheDish[i];
+        if (everythingInTheDish.length != 0){
+            console.log("EVERYTHING IN DISH Array: " + everythingInTheDish);
+            var resultString = "";
+            for (var i = 0; i < everythingInTheDish.length; i++){
+                resultString += "&item=" + everythingInTheDish[i];
+            }
+            console.log("Everything in the string sending to API: " + resultString);
+            totalPrice = totalPrice + callAPIAsyncGetPrice(dish_id, resultString);
         }
-        console.log("everything in the dish: " + resultString);
-        totalPrice = totalPrice + callAPIAsyncGetPrice(dish_id, resultString);
-        return totalPrice;
+
     }
+    return totalPrice;
 }
 
 
-const CustomerTotalPrice = () => {
-  return (
-    // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-    <div>Pending</div>
-  )
+class CustomerTotalPrice extends Component   {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {price: ""}
+    }
+
+    componentDidMount() {
+        returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))
+            .then(price => this.setState({price: price}));
+    }
+
+    render(){
+        return (
+            // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
+            <div>{this.state.price}</div>
+            // <div>Pending</div>
+        )
+    }
 }
 
 export default CustomerTotalPrice
