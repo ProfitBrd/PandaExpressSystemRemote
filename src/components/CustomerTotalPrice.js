@@ -5,7 +5,16 @@ import React, { Component } from 'react'
 // }
 
 var callAPIAsyncGetPrice = async (dishId, idString) => {
-    (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).text();
+    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
+    const response = await promise;
+    const result = await response.json();
+    return result.price;
+}
+
+var addToOrderHistory = async (dishId, idString) => {
+    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
 }
 
 const returnPrice = async (MyListOfOrders) => {
@@ -42,7 +51,8 @@ const returnPrice = async (MyListOfOrders) => {
                 resultString += "&item=" + everythingInTheDish[i];
             }
             console.log("Everything in the string sending to API: " + resultString);
-            totalPrice = totalPrice + callAPIAsyncGetPrice(dish_id, resultString);
+            totalPrice = totalPrice + await callAPIAsyncGetPrice(dish_id, resultString);
+            console.log("New total price: " + totalPrice);
         }
 
     }
@@ -58,15 +68,15 @@ class CustomerTotalPrice extends Component   {
         this.state = {price: ""}
     }
 
-    componentDidMount() {
-        returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))
-            .then(price => this.setState({price: price}));
+    async componentDidMount() {
+        const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
+        this.setState({price: price});
     }
 
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <div>{this.state.price}</div>
+            <div>Hello: {this.state.price}</div>
             // <div>Pending</div>
         )
     }
