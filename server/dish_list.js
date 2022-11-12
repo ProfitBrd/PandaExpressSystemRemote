@@ -69,8 +69,13 @@ router.get('/summary', (req, res) => {
 router.get('/price', async (req, res) => {
     let itemIDList = req.query.item;
     let itemPromiseList = [];
-    for(let i = 0; i < itemIDList.length; i++) {
-        itemPromiseList.push(getItemByName(itemIDList[i]));
+    if(Array.isArray(itemIDList)){ //Have to Check if it's an array or else when there's a single item it iterates over every letter
+        for(let i = 0; i < itemIDList.length; i++) {
+            itemPromiseList.push(getItemByName(itemIDList[i]));
+        }
+    }
+    else{
+        itemPromiseList.push(getItemByName(itemIDList));
     }
 
     const itemList = await Promise.all(itemPromiseList);
@@ -93,14 +98,17 @@ router.get('/price', async (req, res) => {
         else if(item.food_type === 'side') sides.push(item);
         else appetizers.push(item);
     }
-
-    for(let i = dish.number_entrees; i < entrees.length; i++)
+    
+    for(let i = dish.number_entrees; i < entrees.length; i++){
+        console.log("Entrees: " + entrees[i].item_price);
         finalPrice += Number(entrees[i].item_price);
+    }
     for(let i = dish.number_sides; i < sides.length; i++)
         finalPrice += Number(sides[i].item_price);
     for(let i = 0; i < appetizers.length; i++)
         finalPrice += Number(appetizers[i].item_price);
 
+    console.log("finalPrice: " + finalPrice);
     res.send({"price": finalPrice});
 })
 
