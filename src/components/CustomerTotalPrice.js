@@ -56,8 +56,8 @@ const returnPrice = async (MyListOfOrders) => {
 
             var resultString = "";
             if (timesRun > 1){
-                for (var i = 0; i < everythingInTheDish.length; i++){
-                    resultString += "&item=" + everythingInTheDish[i];
+                for (var idx = 0; idx < everythingInTheDish.length; idx++){
+                    resultString += "&item=" + everythingInTheDish[idx];
                 }
             }
             else{
