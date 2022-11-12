@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "../index.css"
 
 // var callAPIAsyncNameToID = async (itemName) => {
 //     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
@@ -34,7 +35,7 @@ const returnPrice = async (MyListOfOrders) => {
         else if(dishtype == "bigger plate"){
             dish_id = 3;
         }
-        var everythingInTheDish = []
+        var everythingInTheDish = [];
         for (var j = 1; j < MyListOfOrders[i].length; j++){
             // if (MyListOfOrders[i][j].length == 1){
             //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
@@ -69,8 +70,7 @@ const returnPrice = async (MyListOfOrders) => {
         }
 
     }
-    console.log("RETURNING");
-    return totalPrice;
+    return totalPrice.toFixed(2);
 }
 
 
@@ -90,7 +90,7 @@ class CustomerTotalPrice extends Component   {
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <div>Hello: {this.state.price}</div>
+            <span id = "PriceSpan">Price: {this.state.price}</span>
             // <div>Pending</div>
         )
     }

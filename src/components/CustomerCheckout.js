@@ -4,6 +4,7 @@ import '../index.css';
 import CustomerDishChoiceButton from './CustomerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';
 import CustomerTotalPrice from './CustomerTotalPrice';
+import CustomerCheckoutButton from './CustomerCheckoutButton';
 
 
 const CustomerCheckout = () => {
@@ -12,9 +13,9 @@ const CustomerCheckout = () => {
   return (
     <div class = "CheckoutScreen">
         <div class = "CustomerCheckoutOrder"><CustomerDishChoiceCurrentOrder /></div>
-        {/* <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerDishChoiceButton Name = "Checkout" /></div> */}
+        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerCheckoutButton /></div>
         <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/CustomerMenu")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerTotalPrice /></div>
+        <div id = "Price"><CustomerTotalPrice /></div>
     </div>
     )
     
