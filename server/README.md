@@ -71,7 +71,8 @@ Ex: http://localhost:3000/order_history?id=3
 Ex Response: {"transaction_id":3,"employee_id":1,"date":"2022-10-01T05:00:00.000Z","type_of_dish":"bigger plate","entree_dish":"honey_seasame_chicken,orange_chicken","entree_amt_servings":"2,4","side_ingredients":"brown_steamed_rice","side_amt_servings":5,"appetizer_ingredients":"chicken_egg_roll","appetizer_amt_servings":1,"price":"13.203985300"}
 
 #### Add Order To History
-Route: /order_history?transaction_id={transaction_id}&employee_id={employee_id}&date={date}&type_of_dish={type_of_dish}&entree_dish={entree_dish}&entree_amt_servings={entree_amt_servings}&side_ingredients={side_ingredients}&side_amt_servings={side_amt_servings}&appetizer_ingredients={appetizer_ingredients}&appetizer_amt_servings={appetizer_amt_servings}&price={price}
+Route: /order_history/add?transaction_id={transaction_id}&employee_id={employee_id}&date={date}&type_of_dish={type_of_dish}&entree_dish={entree_dish}&entree_amt_servings={entree_amt_servings}&side_ingredients={side_ingredients}&side_amt_servings={side_amt_servings}&appetizer_ingredients={appetizer_ingredients}&appetizer_amt_servings={appetizer_amt_servings}&price={price}
+Ex: http://localhost:3000/order_history/add?transaction_id=2&employee_id=2&date=2022-10-01&type_of_dish=plate&entree_dish=honey_seasame_chicken,orange_chicken&entree_amt_servings=4,2&side_ingredients=white_steamed_rice&side_amt_servings=2&appetizer_ingredients=chicken_egg_roll&appetizer_amt_servings=2&price=16.07
 
 Ex Response: No Response
 
