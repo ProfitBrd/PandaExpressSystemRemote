@@ -27,6 +27,17 @@ router.get('/', (req, res) => {
         });
 });
 
+function parseParallelStrings(itemList, servingList, map) {
+    itemArr = itemList.split(",");
+    servingArr = servingList.toString().split(",").map(Number);
+    for(i = 0; i < itemArr.length; i++) {
+        if(map.has(itemArr[i]))
+            map.set(itemArr[i], map.get(itemArr[i]) + servingArr[i]);
+        else
+            map.set(itemArr[i], servingArr[i]);
+    }
+}
+
 router.get('/add', (req, res) => {
     let transaction_id = req.query.transaction_id;
     let employee_id = req.query.employee_id;
@@ -47,6 +58,19 @@ router.get('/add', (req, res) => {
             res.status(200).end();
             //res.render('user');
         });
+
+    // TODO: update inventory amounts
+    const itemAmountMap = new Map();
+    parseParallelStrings(entree_dish, entree_amt_servings, itemAmountMap);
+    parseParallelStrings(side_ingredients, side_amt_servings, itemAmountMap);
+    parseParallelStrings(appetizer_ingredients, appetizer_amt_servings, itemAmountMap);
+
+    itemAmountMap.forEach((servings, name) => {
+        const updateQuery = `UPDATE inventory SET servings = servings - ${servings} WHERE item_name='${name}'`;
+        console.log(`Performing query: ${updateQuery}`);
+        pool.query(updateQuery);
+    })
+    
 });
 
 router.get('/nextID', (req, res) => {
@@ -56,7 +80,22 @@ router.get('/nextID', (req, res) => {
         .query(query)
         .then(query_res => {
             const data = query_res.rows[0];
-            data.max += 1;
+            res.send({"nextID": data.max + 1});
+            //res.render('user', data);
+        });
+});
+
+router.get('/summary', (req, res) => {
+    items = [];
+    const query = `SELECT * FROM order_history`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            for (let i = 0; i < query_res.rowCount; i++){
+                items.push(query_res.rows[i]);
+            }
+            const data = items;
             res.send(data);
             //res.render('user', data);
         });
