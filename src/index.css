@@ -18,14 +18,15 @@ code {
 :root{
   /*Customer Dish Choice Menu Buttons*/
   --CustomerDishMenuBackgroundColor: #D1282E;
-  --CustomerDishChoiceButtonTextColor: #241e1e;
-	--CustomerDishChoiceButtonBackgroundColor: #fbeb0b;
+  --CustomerDishChoiceButtonTextColor: #D1282E;
+	--CustomerDishChoiceButtonBackgroundColor: #000000;
   --CustomerDishChoiceButtonEdgeColor: #241e1e;
-  --CustomerDishChoiceButtonTextHoverColor: #f5f5f5;
-  --CustomerDishChoiceButtonBackgroundHoverColor: #D1282E;
+  --CustomerDishChoiceButtonTextHoverColor: #000000;
+  --CustomerDishChoiceButtonBackgroundHoverColor: #ffffff;
   --CustomerCurrentOrderBackgroundColor: #f5f5f5;
   background-color: var(--CustomerDishMenuBackgroundColor);
 }
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar { 
