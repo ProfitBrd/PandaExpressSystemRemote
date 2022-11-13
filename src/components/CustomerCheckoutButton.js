@@ -147,7 +147,7 @@ const orderTheItems = async (MyListOfOrders) => {
         }
 
         // var sidesResultString = "";
-        var nextID = await (await fetch("http://localhost:3000/order_history/nextID")).text();
+        var nextID = (await (await fetch("http://localhost:3000/order_history/nextID")).json()).nextID;
         var price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
         var date = "2022-10-25";
         console.log(`Order Sending: transaction_id=${nextID}&employee_id=0&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
@@ -171,7 +171,7 @@ class CustomerCheckoutButton extends Component   {
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <span onClick = {() => {orderTheItems(JSON.parse(localStorage.getItem('CurrentOrder')))}}>Checkout</span>
+            <div class = "CustomerCheckoutButton" id = "CheckoutText" onClick = {() => {orderTheItems(JSON.parse(localStorage.getItem('CurrentOrder')))}}>Checkout</div>
             // <div>Pending</div>
         )
     }

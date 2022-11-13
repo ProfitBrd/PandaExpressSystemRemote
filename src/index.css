@@ -171,6 +171,8 @@ body {
 #Checkout{
   grid-row: 3 / span 1;
 	grid-column: 3 / span 1;
+
+  padding-top: 5%;
 }
 #GoBack{
   grid-row: 3 / span 1;
@@ -187,7 +189,15 @@ body {
   background-color: var(--CustomerCurrentOrderBackgroundColor)
 }
 #PriceSpan{
-  font-size: max(1.2vw,20px);
+  font-size: max(2vw,20px);
+}
+#CheckoutText{
+  padding-top: auto;
+  text-decoration: none;
+  text-align: center;
+  font-size: max(2vw,25px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
 }
 
 
