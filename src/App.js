@@ -46,13 +46,11 @@ class App extends Component {
       <Router>
         <Sidebar />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/sales" element={<Sales/>}/>
-          <Route path="/inventory" element={<Inventory/>}/>
-          <Route path="/employee" element={<Employee/>}/>
-          <Route path="/accessibility" element={<Accessibility/>}/>
-          <Route path="/" element={<Accessibility/>}/>
-          <Route path="/accessibility" element={<Accessibility/>}/>
+          <Route path="/manager" element={<Home/>}/>
+          <Route path="/manager/sales" element={<Sales/>}/>
+          <Route path="/manager/inventory" element={<Inventory/>}/>
+          <Route path="/manager/employee" element={<Employee/>}/>
+          <Route path="/manager/accessibility" element={<Accessibility/>}/>
           <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
           <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
           <Route path=  "/CustomerMenu/entrees" element={<Entree />} />

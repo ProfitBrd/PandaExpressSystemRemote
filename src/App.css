@@ -16,6 +16,11 @@ select {
   width: 100px;
 }
 
+.Sales {
+  width: 1600px;
+  height:900px;
+}
+
 .SubmitButton {
   height: 25px;
   width: 100px;
@@ -142,7 +147,7 @@ button {
   background-size:cover;
   min-height:900px;
   background-color:white;
-  font-size: 41px;
+  font-size: 30px;
   color:white;
   text-align:center;
 }
