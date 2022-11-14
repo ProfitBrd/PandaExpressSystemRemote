@@ -33,14 +33,6 @@ function itemBox({ itemImg, itemName, itemPrice, itemType }) {
         <h2>{itemName}</h2>
       </div>
 
-      <div className="itemInfo">
-        <div>
-          <p>
-            itemPrice: {itemPrice}
-          </p>
-        </div>
-      </div>
-
       <div className="selectBtn">
         <button onClick={()=>addToCart(itemName, itemType)} className="btn">Select</button>
       </div>
@@ -49,7 +41,14 @@ function itemBox({ itemImg, itemName, itemPrice, itemType }) {
   );
 }
 
-
-
+/*
+      <div className="itemInfo">
+        <div>
+          <p>
+            itemPrice: {itemPrice} 
+          </p>
+        </div>
+      </div>    
+*/
 
 export default itemBox;
