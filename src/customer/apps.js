@@ -20,8 +20,8 @@ function apps() {
                     </div>
                     
                     <main>
-                        <ItemBox itemImg = {ceRoll} itemName = {"chicken_egg_roll"} itemPrice = {"$1"} itemType = {"3"} />
-                        <ItemBox itemImg = {cShrimp} itemName = {"crispy_shrimp"} itemPrice = {"$2"} itemType = {"3"} />
+                        <ItemBox itemImg = {ceRoll} itemName = {"chicken_egg_roll"} itemTitle = {"Chicken Egg Roll"} itemType = {"3"} />
+                        <ItemBox itemImg = {cShrimp} itemName = {"crispy_shrimp"} itemTitle = {"Crispy Shrimp"} itemType = {"3"} />
                     </main>
                 </div>
             </div>
