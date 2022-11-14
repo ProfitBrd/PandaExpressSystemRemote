@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ServerDishChoiceButton from "./ServerDishChoiceButton";
 import ServerDishChoiceCurrentOrder from "./ServerDishChoiceCurrentOrder";
-import '../index.css';
+import '../index2.css';
 
 
 const ServerMenu = () => {

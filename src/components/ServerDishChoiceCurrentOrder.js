@@ -1,4 +1,4 @@
-import '../index.css';
+import '../index2.css';
 import React, { useState } from "react";
 
 var mylistoforders = [];

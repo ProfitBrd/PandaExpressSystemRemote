@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../index.css';
+import '../index2.css';
 import HomePageNavButton from './HomePageNavButton';
 import Image from '../panda-logo.png'
 import { useNavigate } from 'react-router-dom';

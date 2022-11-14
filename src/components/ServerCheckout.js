@@ -1,6 +1,6 @@
 import React from 'react'
 import ServerDishChoiceCurrentOrder from "./ServerDishChoiceCurrentOrder";
-import '../index.css';
+import '../index2.css';
 import ServerDishChoiceButton from './ServerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';
 

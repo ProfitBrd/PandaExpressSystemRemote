@@ -1,4 +1,4 @@
-import '../index2.css';
+import '../index.css';
 import React, { useState } from "react";
 
 var mylistoforders = [];
@@ -46,14 +46,16 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
       const mynewlistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
       //If if is a whole order, delete everything inside
       if (mynewlistoforders[index][subIndex][subsubIndex] === 'bowl' || mynewlistoforders[index][subIndex][subsubIndex] === 'plate' || mynewlistoforders[index][subIndex][subsubIndex] === 'bigger plate'){
-        for (var i = 0; i < mynewlistoforders[index].length; i++){
-          for (var j = 0; j < mynewlistoforders[index][i].length; j++){
-            mynewlistoforders[index][i][j] = '';
-          }
-        }
+        mynewlistoforders.splice(index, 1);
+        // for (var i = 0; i < mynewlistoforders[index].length; i++){
+        //   for (var j = 0; j < mynewlistoforders[index][i].length; j++){
+        //     mynewlistoforders[index][i][j] = '';
+        //   }
+        // }
       }
       else{
-        mynewlistoforders[index][subIndex][subsubIndex] = '';
+        // mynewlistoforders[index][subIndex][subsubIndex] = '';
+        mynewlistoforders[index][subIndex].splice(subsubIndex, 1);
       }
       setOrders(mynewlistoforders);
       localStorage.setItem('CurrentOrder', JSON.stringify(mynewlistoforders));

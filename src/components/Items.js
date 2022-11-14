@@ -1,5 +1,5 @@
 import React from 'react'
-import '../index.css';
+import '../index2.css';
 import ItemChoiceButton from './ItemChoiceButton';
 import { useNavigate } from 'react-router-dom';
 
