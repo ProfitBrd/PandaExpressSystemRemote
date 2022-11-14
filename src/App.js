@@ -57,13 +57,18 @@ class App extends Component {
   render() {  
     return (  
       <Router>
-        {/* <Sidebar /> */}
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/sales" element={<Sales/>}/>
-          <Route path="/inventory" element={<Inventory/>}/>
-          <Route path="/employee" element={<Employee/>}/>
-          <Route path="/accessibility" element={<Accessibility/>}/>
+          <Route path="/manager" element={<Home/>}/>
+          <Route path="/manager/sales" element={<Sales/>}/>
+          <Route path="/manager/inventory" element={<Inventory/>}/>
+          <Route path="/manager/employee" element={<Employee/>}/>
+          <Route path="/manager/accessibility" element={<Accessibility/>}/>
+          <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+          <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
+          <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
+          <Route path=  "/CustomerMenu/sides" element={<Side />} />
+          <Route path=  "/CustomerMenu/apps" element={<Apps />} />
+          <Route path=  "/CustomerMenu/ordering" element={<Container />} />
           <Route path="*" element={<ErrorPage/>}/>
           <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
             <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
@@ -72,9 +77,6 @@ class App extends Component {
             <Route path=  "/CustomerMenu/apps" element={<Apps />} />
             <Route path=  "/CustomerMenu/ordering" element={<Container />} />
         </Routes>
-      {/* <div className="Footer"> */}
-      {/* Footer */}
-      {/* </div> */}
       </Router>
     );
   }
