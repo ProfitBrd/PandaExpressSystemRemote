@@ -9,6 +9,8 @@ label {
 table, th, td {
   border: 1px solid black;
   width: 1500px;
+  font-size:10px;
+  overflow:scroll;
 }
 
 input {
@@ -102,6 +104,7 @@ button {
 }
 .active-content {
   display: block;
+  overflow:scroll;
 }
 
 .tabs {
@@ -122,6 +125,7 @@ button {
 .active-tabs  {
   background: white;
   border-bottom: 1px solid transparent;
+  overflow:scroll;
 }
 
 .active-tabs::before {
