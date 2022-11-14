@@ -17,8 +17,8 @@ code {
 /* Variables for the */
 :root{
   /*Customer Dish Choice Menu Buttons*/
-  --CustomerDishMenuBackgroundColor: #D1282E;
-  --CustomerDishChoiceButtonTextColor: #D1282E;
+  --CustomerDishMenuBackgroundColor: #ffffff;
+  --CustomerDishChoiceButtonTextColor: #8b0909;
 	--CustomerDishChoiceButtonBackgroundColor: #000000;
   --CustomerDishChoiceButtonEdgeColor: #241e1e;
   --CustomerDishChoiceButtonTextHoverColor: #000000;
