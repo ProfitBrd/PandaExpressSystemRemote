@@ -18,14 +18,15 @@ code {
 :root{
   /*Customer Dish Choice Menu Buttons*/
   --CustomerDishMenuBackgroundColor: #D1282E;
-  --CustomerDishChoiceButtonTextColor: #241e1e;
-	--CustomerDishChoiceButtonBackgroundColor: #fbeb0b;
+  --CustomerDishChoiceButtonTextColor: #D1282E;
+	--CustomerDishChoiceButtonBackgroundColor: #000000;
   --CustomerDishChoiceButtonEdgeColor: #241e1e;
-  --CustomerDishChoiceButtonTextHoverColor: #f5f5f5;
-  --CustomerDishChoiceButtonBackgroundHoverColor: #D1282E;
+  --CustomerDishChoiceButtonTextHoverColor: #000000;
+  --CustomerDishChoiceButtonBackgroundHoverColor: #ffffff;
   --CustomerCurrentOrderBackgroundColor: #f5f5f5;
-
+  background-color: var(--CustomerDishMenuBackgroundColor);
 }
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 body::-webkit-scrollbar { 
@@ -93,7 +94,7 @@ body {
 	grid-column: 3 / span 1;
 }
 #CheckoutScreen{
-  grid-row: 3 / span 1;
+  grid-row: 2 / span 1;
 	grid-column: 3 / span 1;
   font-size: max(1.2vw,10px);
 }
@@ -123,7 +124,7 @@ body {
 /* Checkout Screen */
 .CheckoutScreen{
   display:grid;
-	grid-template-rows: 1fr 50px 25%;
+	grid-template-rows: 1fr 50% 25%;
 	grid-template-columns: 13% 33% 33% 13%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
@@ -170,13 +171,35 @@ body {
 }
 #Checkout{
   grid-row: 3 / span 1;
-	grid-column: 2 / span 1;
+	grid-column: 3 / span 1;
+
+  padding-top: 5%;
 }
 #GoBack{
   grid-row: 3 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
 }
-
+#Price{
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 2;
+  padding: 10px;
+  margin:auto;
+  font-size: max(1.2vw,15px);
+  border-radius: 12px;
+  border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
+  background-color: var(--CustomerCurrentOrderBackgroundColor)
+}
+#PriceSpan{
+  font-size: max(2vw,20px);
+}
+#CheckoutText{
+  padding-top: auto;
+  text-decoration: none;
+  text-align: center;
+  font-size: max(2vw,25px);
+  border-radius: 12px;
+  transition-duration: 0.4s;
+}
 
 
 /*---------------------------------------------------------------*/

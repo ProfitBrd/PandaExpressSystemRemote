@@ -10,14 +10,13 @@ import Inventory from './pages/Inventory';
 import Accessibility from './pages/Accessability';
 import ErrorPage from './pages/ErrorPage';
 
-import CustomerLadingPage from "./components/CustomerLandingPage";
-import CustomerCheckout from './components/CustomerCheckout';
-import CustomerMenu from './components/CustomerMenu';
-
+import CustomerMenu from "./components/CustomerMenu";
+import CustomerLandingPage from "./components/CustomerLandingPage";
 import Container from './customer/container';
 import Entree from "./customer/entreeOption";
 import Side from "./customer/sideOption";
 import Apps from "./customer/appOption";
+import CustomerCheckout from './components/CustomerCheckout';
 
 /*
         // something so i can push again
@@ -71,6 +70,12 @@ class App extends Component {
           <Route path=  "/CustomerMenu/apps" element={<Apps />} />
           <Route path=  "/CustomerMenu/ordering" element={<Container />} />
           <Route path="*" element={<ErrorPage/>}/>
+          <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+            <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
+            <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
+            <Route path=  "/CustomerMenu/sides" element={<Side />} />
+            <Route path=  "/CustomerMenu/apps" element={<Apps />} />
+            <Route path=  "/CustomerMenu/ordering" element={<Container />} />
         </Routes>
       </Router>
     );
