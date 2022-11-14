@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "../App.css";
+import Critical from './CriticalItemsDisplay'
+import Summary from './InventoryDisplay'
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
@@ -14,11 +16,35 @@ function InventoryTabs() {
   const [type, setType] = useState('entree');
   const [updateItemName, setUpdateItemName] = useState('Orange Chicken');
   const [updateItemAmount, setUpdateItemAmount] = useState('0');
+  const [criticalItems, setCriticalResponse] = useState('0');
+  const [inventorySummary, setInventorySummary] = useState('0');
 
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
+
+  const queryCrit = async() => {
+    const promise = fetch(`http://localhost:3000/report/restock`); 
+    const response = await promise;
+    const result = await response.json();
+    console.log(result);
+    setCriticalResponse(result);
+  };
+
+  const queryInventory = async() => {
+    const promise = fetch(`http://localhost:3000/inventory/summary`); 
+    const response = await promise;
+    const result = await response.json();
+    console.log(result);
+    setInventorySummary(result);
+  };
+
+  // reset values to 0
+  // setname ... 0
+  const addItem = async() => {
+  };
+
 
   return (
     <div className="container">
@@ -48,28 +74,13 @@ function InventoryTabs() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
           <h2>Current Inventory</h2>
-          <p></p>
-          <button className="SubmitCritical">View Critical Items</button>
-          <p></p>
-          <table>
-            <tr>
-              <td>Name</td>
-              <td>Price</td>
-              <td>Amount</td>
-              <td>Critical Value</td>
-              <td>Restock Value</td>
-              <td>Type</td>
-            </tr>
-            <tr>
-              <td>Orange Chicken</td>
-              <td>2</td>
-              <td>90</td>
-              <td>50</td>
-              <td>100</td>
-              <td>Entree</td>
-            </tr>
-          </table>
 
+          <button className="SubmitCritical" onClick={() => queryInventory()}> View Inventory</button>
+          <Critical inventoryList={inventorySummary}/>
+          <p></p>
+          <button className="SubmitCritical" onClick={() => queryCrit()}> View Critical Items</button>
+          <Critical itemList={criticalItems}/>
+          <p></p>
         </div>
 
         <div
@@ -77,6 +88,7 @@ function InventoryTabs() {
         >
           <h2>Add Inventory Item</h2>
           <hr />
+          <p></p>
           <form>
             <label> Enter Name </label>
             <input
