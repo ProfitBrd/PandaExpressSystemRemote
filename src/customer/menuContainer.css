@@ -46,9 +46,9 @@
   
   .menuContainer .menuItems main {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
   }
   
   .menuContainer .menuItems  main .details {
@@ -61,9 +61,8 @@
   }
   
   .menuContainer .menuItems  main .details .imgDetails {
-    max-width: 100%;
+    width: 100%;
     object-fit: cover;
-    object-position: center;
   }
   
   .menuContainer .menuItems  main .details .foodName {
@@ -85,7 +84,7 @@
     text-align: left;
     margin: 10px;
   }
-  .menuContainer .menuItems  main .details .itemInfo p {
+  .menuContainer .menuItems  main .details .itemInfo {
     font-size: 12px;
     font-weight: bold;
     color: #a5a4a9;
