@@ -22,11 +22,11 @@ function sides() {
                         {/* <Link to="/" className="optionBtn"> A la Carte </Link>        */}
                     </div>
                     <main>
-                        <ItemBox itemImg = {mixedVeg} itemName = {"mixed_vegetables"} itemPrice = {"$1"} itemType = {"2"} />
-                        <ItemBox itemImg = {chowMein} itemName = {"chow_mein"} itemPrice = {"$2"} itemType = {"2"} />
-                        <ItemBox itemImg = {friedRice} itemName = {"fried_rice"} itemPrice = {"$3"} itemType = {"2"} />
-                        <ItemBox itemImg = {whiteRice} itemName = {"white_steamed_rice"} itemPrice = {"$4"} itemType = {"2"} />
-                        <ItemBox itemImg = {brownRice} itemName = {"brown_steamed_rice"} itemPrice = {"$5"} itemType = {"2"} />
+                        <ItemBox itemImg = {mixedVeg} itemName = {"mixed_vegetables"} itemTitle = {"Mixed Vegetables"} itemType = {"2"} />
+                        <ItemBox itemImg = {chowMein} itemName = {"chow_mein"} itemTitle = {"Chow Mein"} itemType = {"2"} />
+                        <ItemBox itemImg = {friedRice} itemName = {"fried_rice"} itemTitle = {"Fried Rice"} itemType = {"2"} />
+                        <ItemBox itemImg = {whiteRice} itemName = {"white_steamed_rice"} itemTitle = {"White Steamed Rice"} itemType = {"2"} />
+                        <ItemBox itemImg = {brownRice} itemName = {"brown_steamed_rice"} itemTitle = {"Brown Steamed Rice"} itemType = {"2"} />
                     </main>
                 </div>
             </div>
