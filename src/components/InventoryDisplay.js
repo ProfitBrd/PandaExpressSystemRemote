@@ -9,18 +9,26 @@ const InventoryDisplay = (props) => {
   }
   items.push(
     <tr>
-      <td>Name</td>
-      <td>Amount</td>
-      <td>Restock Quantity</td>
+      <td>item_id</td>
+      <td>item_name</td>
+      <td>servings</td>
+      <td>restock_quantity</td>
+      <td>item_price</td>
+      <td>food_type</td>
+      <td>minimum_amount</td>
     </tr>
   )
   for (let i = 0; i < props.inventoryList.length; i++) {
     const item = props.inventoryList[i];
     const itemDisplay = (
       <tr>
+        <td>{item.item_id}</td>
         <td>{item.item_name}</td>
         <td>{item.servings}</td>
         <td>{item.restock_quantity}</td>
+        <td>{item.item_price}</td>
+        <td>{item.food_type}</td>
+        <td>{item.minimum_amount}</td>
       </tr>)
       items.push(itemDisplay);
   }

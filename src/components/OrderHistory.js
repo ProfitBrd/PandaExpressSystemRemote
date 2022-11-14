@@ -1,43 +1,25 @@
-import React, { Component } from 'react'
-import "../index.css"
+import { useState } from "react";
+import "../App.css";
+import Summary from './OrderHistoryDisplay'
 
-// var callAPIAsyncNameToID = async (itemName) => {
-//     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
-// }
+function OrderHistory() {
+  const [orderHistorySummary, setOrderHistorySummary] = useState('0');
 
-var callAPIAsyncGetOrderHistory = async () => {
-    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:3000/order_history/summmary`);
+  const querySummary = async() => {
+    const promise = fetch(`http://localhost:3000/order_history/summary`); 
     const response = await promise;
     const result = await response.json();
-    return result.orderHistory;
+    console.log(result);
+    setOrderHistorySummary(result);
+  };
+
+  return (
+    <div>
+      <h2>Current Inventory</h2>
+      <button className="SubmitCritical" onClick={() => querySummary()}> View Order History</button>
+    <Summary orderList={orderHistorySummary}/>
+    </div>
+  );
 }
 
-const returnOrderHistory = async () => {
-  console.log("Retrieved Order History");
-  return await callAPIAsyncGetOrderHistory();
-}
-
-class ManagerOrderHistory extends Component   {
-
-
-    constructor(props) {
-        super(props);
-        this.state = {orderHistory: ""}
-    }
-
-    async componentDidMount() {
-        const orderHistory = await returnOrderHistory();
-        this.setState({orderHistory: orderHistory});
-    }
-
-    render(){
-        return (
-            // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <span id = "Summary">Order History: {this.state.orderHistory}</span>
-            // <div>Pending</div>
-        )
-    }
-}
-
-export default ManagerOrderHistory
+export default OrderHistory;

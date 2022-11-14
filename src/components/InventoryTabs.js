@@ -40,6 +40,14 @@ function InventoryTabs() {
     setInventorySummary(result);
   };
 
+  const restockInventory = async() => {
+    const promise = fetch(`http://localhost:3000/inventory/summary`); 
+    const response = await promise;
+    const result = await response.json();
+    console.log(result);
+    setInventorySummary(result);
+  };
+
   // reset values to 0
   // setname ... 0
   const addItem = async() => {
@@ -76,12 +84,12 @@ function InventoryTabs() {
           <h2>Current Inventory</h2>
 
           <button className="SubmitCritical" onClick={() => queryInventory()}> View Inventory</button>
-          <Critical inventoryList={inventorySummary}/>
+          <Summary inventoryList={inventorySummary}/>
           <p></p>
           <button className="SubmitCritical" onClick={() => queryCrit()}> View Critical Items</button>
           <Critical itemList={criticalItems}/>
           <p></p>
-        </div>
+      </div>
 
         <div
           className={toggleState === 2 ? "content  active-content" : "content"}
