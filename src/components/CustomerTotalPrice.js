@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
+import "../index.css"
 
 // var callAPIAsyncNameToID = async (itemName) => {
 //     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
 // }
 
 var callAPIAsyncGetPrice = async (dishId, idString) => {
-    (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).text();
+    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
+    const response = await promise;
+    const result = await response.json();
+    return result.price;
+}
+
+var addToOrderHistory = async (dishId, idString) => {
+    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+    const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
 }
 
 const returnPrice = async (MyListOfOrders) => {
     var totalPrice = 0;
-    console.log("List sent to function: " + MyListOfOrders);
+    var timesRun = 0;
+    console.log("LENGTH: " + MyListOfOrders.length);
     for (var i = 0; i < MyListOfOrders.length; i++){
+        console.log("RUNNING");
         var dishtype = MyListOfOrders[i][0][0];
         var dish_id = 1;
         if(dishtype == "bowl"){
@@ -23,30 +35,42 @@ const returnPrice = async (MyListOfOrders) => {
         else if(dishtype == "bigger plate"){
             dish_id = 3;
         }
-        var everythingInTheDish = []
+        var everythingInTheDish = [];
         for (var j = 1; j < MyListOfOrders[i].length; j++){
-            for (var k = 0; k < MyListOfOrders[i][j].length; k++){
-                if (MyListOfOrders[i][j][k] === ""){
-                    continue;
+            // if (MyListOfOrders[i][j].length == 1){
+            //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
+            // }
+            // else{
+                for (var k = 0; k < MyListOfOrders[i][j].length; k++){
+                    if (MyListOfOrders[i][j][k] === ""){
+                        continue;
+                    }
+                    else{
+                        //push all the id's
+                        everythingInTheDish.push(MyListOfOrders[i][j][k]);
+                        timesRun = timesRun + 1;
+                    }
                 }
-                else{
-                    //push all the id's
-                    everythingInTheDish.push(MyListOfOrders[i][j][k]);
-                }
-            }
+            // }
         }
-        if (everythingInTheDish.length != 0){
-            console.log("EVERYTHING IN DISH Array: " + everythingInTheDish);
+        if (timesRun > 0){
+
             var resultString = "";
-            for (var i = 0; i < everythingInTheDish.length; i++){
-                resultString += "&item=" + everythingInTheDish[i];
+            if (timesRun > 1){
+                for (var idx = 0; idx < everythingInTheDish.length; idx++){
+                    resultString += "&item=" + everythingInTheDish[idx];
+                }
             }
-            console.log("Everything in the string sending to API: " + resultString);
-            totalPrice = totalPrice + callAPIAsyncGetPrice(dish_id, resultString);
+            else{
+                resultString += "&item=" + everythingInTheDish[0];
+            }
+            // console.log("Everything in the string sending to API: " + resultString);
+            totalPrice = totalPrice + await callAPIAsyncGetPrice(dish_id, resultString);
+            console.log("New total price: " + totalPrice);
         }
 
     }
-    return totalPrice;
+    return totalPrice.toFixed(2);
 }
 
 
@@ -58,15 +82,15 @@ class CustomerTotalPrice extends Component   {
         this.state = {price: ""}
     }
 
-    componentDidMount() {
-        returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))
-            .then(price => this.setState({price: price}));
+    async componentDidMount() {
+        const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
+        this.setState({price: price});
     }
 
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <div>{this.state.price}</div>
+            <span id = "PriceSpan">Price: {this.state.price}</span>
             // <div>Pending</div>
         )
     }

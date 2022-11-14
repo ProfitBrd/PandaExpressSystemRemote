@@ -12,6 +12,11 @@ import ErrorPage from './pages/ErrorPage';
 
 import CustomerMenu from "./components/CustomerMenu";
 import CustomerLandingPage from "./components/CustomerLandingPage";
+import Container from './customer/container';
+import Entree from "./customer/entreeOption";
+import Side from "./customer/sideOption";
+import Apps from "./customer/appOption";
+import CustomerCheckout from './components/CustomerCheckout';
 
 /*
         // something so i can push again
@@ -52,7 +57,7 @@ class App extends Component {
   render() {  
     return (  
       <Router>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/sales" element={<Sales/>}/>
@@ -60,10 +65,16 @@ class App extends Component {
           <Route path="/employee" element={<Employee/>}/>
           <Route path="/accessibility" element={<Accessibility/>}/>
           <Route path="*" element={<ErrorPage/>}/>
+          <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+            <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
+            <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
+            <Route path=  "/CustomerMenu/sides" element={<Side />} />
+            <Route path=  "/CustomerMenu/apps" element={<Apps />} />
+            <Route path=  "/CustomerMenu/ordering" element={<Container />} />
         </Routes>
-      <div className="Footer">
-      Footer
-      </div>
+      {/* <div className="Footer"> */}
+      {/* Footer */}
+      {/* </div> */}
       </Router>
     );
   }
