@@ -4,17 +4,7 @@ import '../index.css';
 import CustomerDishChoiceButton from './CustomerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';
 import CustomerTotalPrice from './CustomerTotalPrice';
-
-// var apiResponse = "t";
-// const callAPI = () => {
-//   fetch("http://localhost:3000/roster?id=3")
-//       .then(console.log("recieved"))
-//       .then(res => res.text())
-//       .then(console.log(res))
-//   //     .then(res => { apiResponse = res });
-//   // console.log("API RESPONSE: " + apiResponse);
-
-// }
+import CustomerCheckoutButton from './CustomerCheckoutButton';
 
 
 const CustomerCheckout = () => {
@@ -23,13 +13,12 @@ const CustomerCheckout = () => {
   return (
     <div class = "CheckoutScreen">
         <div class = "CustomerCheckoutOrder"><CustomerDishChoiceCurrentOrder /></div>
-        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerDishChoiceButton Name = "Checkout" /></div>
+        <div id = "Checkout"><CustomerCheckoutButton /></div>
         <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/CustomerMenu")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        {/* <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerTotalPrice /></div> */}
+        <div id = "Price"><CustomerTotalPrice /></div>
     </div>
     )
     
 }
-// onClick={console.log("HELLO: " + callAPI())}
 
 export default CustomerCheckout

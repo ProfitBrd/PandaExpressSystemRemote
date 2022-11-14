@@ -1,8 +1,6 @@
 import { useState } from "react";
 import "../App.css";
 import {Form} from './Form'
-import React from 'react'
-
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 

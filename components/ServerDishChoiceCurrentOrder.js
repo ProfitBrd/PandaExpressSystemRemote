@@ -1,4 +1,4 @@
-import '../index2.css';
+import '../index.css';
 import React, { useState } from "react";
 
 var mylistoforders = [];
@@ -26,7 +26,7 @@ order3.push(dish3, entrees3, sides3, appetizers3);
 
 mylistoforders.push(order1, order2, order3);
 
-var test = [[[]]];
+var test = [[[""]]];
 
 var databaseName = ['honey_seasame_chicken','orange_chicken','black_pepper_angus_steak','string_bean_chicken_breast','sweetfire_chicken_breast','kung_pao_chicken','black_pepper_chicken','grilled_teriyaki_chicken','broccoli_beef','bejing_beef','honey_walnut_shrimp','mushroom_chicken','eggplant_tofu','mixed_vegetables','chow_mein','fried_rice','white_steamed_rice','brown_steamed_rice','chicken_egg_roll','crispy_shrimp'];
 var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angus Steak', 'String Bean Chicken Breast', 'Sweetfire Chicken Breast', 'Kung Pao Chicken', 'Black Pepper Chicken', 'Grilled Teriyaki Chicken', 'Broccoli Beef', 'Bejing Beef', 'Honey Walnut Shrimp','Mushroom Chicken', 'Eggplant Tofu', 'Mixed Vegetables', 'Chow Mein', 'Fried Rice', 'White Steamed Rice', 'Brown Steamed Rice', 'Chicken Egg Roll', 'Crispy Shrimp'];
@@ -35,24 +35,27 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
     var [orders, setOrders] = useState([]);
     var mylistoforders2 = JSON.parse(localStorage.getItem('CurrentOrder'));
     
+    // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
     //if the orders don't exist
     if (mylistoforders2 == null) {
       console.log("mylistoforders2 doesn't exist");
       localStorage.setItem('CurrentOrder', JSON.stringify(test));
-      localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
+      // localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
     }
     const handlechange = (index, subIndex, subsubIndex) => {
       const mynewlistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
       //If if is a whole order, delete everything inside
       if (mynewlistoforders[index][subIndex][subsubIndex] === 'bowl' || mynewlistoforders[index][subIndex][subsubIndex] === 'plate' || mynewlistoforders[index][subIndex][subsubIndex] === 'bigger plate'){
-        for (var i = 0; i < mynewlistoforders[index].length; i++){
-          for (var j = 0; j < mynewlistoforders[index][i].length; j++){
-            mynewlistoforders[index][i][j] = '';
-          }
-        }
+        mynewlistoforders.splice(index, 1);
+        // for (var i = 0; i < mynewlistoforders[index].length; i++){
+        //   for (var j = 0; j < mynewlistoforders[index][i].length; j++){
+        //     mynewlistoforders[index][i][j] = '';
+        //   }
+        // }
       }
       else{
-        mynewlistoforders[index][subIndex][subsubIndex] = '';
+        // mynewlistoforders[index][subIndex][subsubIndex] = '';
+        mynewlistoforders[index][subIndex].splice(subsubIndex, 1);
       }
       setOrders(mynewlistoforders);
       localStorage.setItem('CurrentOrder', JSON.stringify(mynewlistoforders));
