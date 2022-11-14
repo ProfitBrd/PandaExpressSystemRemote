@@ -109,7 +109,7 @@ const orderTheItems = async (MyListOfOrders) => {
         }
         else{
             entreesResultString += "NONE";
-            entreesAmountResultString += "NONE";
+            entreesAmountResultString += "0";
         }
 
         if (Array.isArray(sides) && sides.length != 0){
@@ -126,7 +126,7 @@ const orderTheItems = async (MyListOfOrders) => {
         }
         else{
             sidesResultString += "NONE";
-            sidesAmountResultString += "NONE";
+            sidesAmountResultString += "0";
         }
 
         if (Array.isArray(appetizers) && appetizers.length != 0){
@@ -143,7 +143,7 @@ const orderTheItems = async (MyListOfOrders) => {
         }
         else{
             appetizersResultString += "NONE";
-            appetizersAmountResultString += "NONE";
+            appetizersAmountResultString += "0";
         }
 
         // var sidesResultString = "";
