@@ -1,6 +1,7 @@
 import React, {useState}from "react";
-import Tabs from "../components/Tabs";
+import InventoryTabs from "../components/InventoryTabs";
 import {Component} from 'react';
+import Sidebar from '../components/Sidebar'
 
 class Inventory extends Component {
   constructor(props) {
@@ -20,10 +21,13 @@ class Inventory extends Component {
   }
   render() {
     return (
-      <div className="Right">
-      <Tabs />
-      <p className="App-intro">{this.state.apiResponse}</p>
-          <button onClick={this.getSummary}>Get Current Inventory</button>
+      <div>
+        <Sidebar />
+        <div className="Right">
+        <InventoryTabs />
+        <p className="App-intro">{this.state.apiResponse}</p>
+            <button onClick={this.getSummary}>Get Current Inventory</button>
+        </div>
       </div>
     )
   }

@@ -1,7 +1,7 @@
-import React, {useState}from "react";
-import Tabs from "../components/Tabs";
+import React, {useState} from "react";
 import EmployeeTabs from "../components/EmployeeTabs";
 import {Component} from 'react';
+import Sidebar from '../components/Sidebar'
 
 class Employee extends Component {
   constructor(props) {
@@ -16,10 +16,16 @@ class Employee extends Component {
   }
   render() {
     return (
-      <div className="Right">
-      <EmployeeTabs />
-      <p className="App-intro">{this.state.apiResponse}</p>
-          <button onClick={this.getSummary}>Get Employee 2</button>
+      <div>
+        <Sidebar />
+        <div className="Right">
+        <EmployeeTabs />
+        <p className="App-intro">{this.state.apiResponse}</p>
+            <button onClick={this.getSummary}>Get Employee 2</button>
+        </div>
+        <div className="Footer">
+        Footer
+        </div>
       </div>
     )
   }

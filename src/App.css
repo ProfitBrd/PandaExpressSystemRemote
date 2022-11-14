@@ -6,6 +6,11 @@ label {
   height: 30px;
 }
 
+table, th, td {
+  border: 1px solid black;
+  width: 1500px;
+}
+
 input {
   height:25px;
   width:100px;
@@ -13,7 +18,7 @@ input {
 
 select {
   height: 25px;
-  width: 100px;
+  width: 200px;
 }
 
 .Sales {
@@ -21,11 +26,29 @@ select {
   height:900px;
 }
 
+.Employee-Dropdown {
+  align-items:center;
+}
+
 .SubmitButton {
-  height: 25px;
+  height: 30px;
   width: 100px;
   background-color: #c5292c;
   color:white;
+  display:block;
+}
+
+.SubmitCritical {
+  height: 30px;
+  width: 200px;
+  background-color: #c5292c;
+  color:white;
+  display:block;
+}
+
+.SubmitCritical:hover {
+  background-color: #6e3638;
+  transition:.7s;
 }
 
 .App-header {
@@ -144,6 +167,7 @@ button {
 }
 
 .Parallax-Accessibility {
+  background-image: url('./panda-view.jpg');
   background-size:cover;
   min-height:900px;
   background-color:white;
@@ -162,6 +186,13 @@ button {
 
 
 .Footer {
+  background-color:black;
+  font-size: 20px;
+  color:white;
+  height:150px;
+}
+
+.FooterFix {
   background-color:black;
   font-size: 20px;
   color:white;

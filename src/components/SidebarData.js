@@ -19,7 +19,7 @@ export const SidebarData = [
   {
     title: "Employee",
     icon: <BadgeIcon />,
-    link: "manager/employee"
+    link: "/manager/employee"
   },
   {
     title: "Inventory",

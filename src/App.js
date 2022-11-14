@@ -58,7 +58,6 @@ class App extends Component {
   render() {  
     return (  
       <Router>
-        <Sidebar />
         <Routes>
           <Route path="/manager" element={<Home/>}/>
           <Route path="/manager/sales" element={<Sales/>}/>
@@ -73,9 +72,6 @@ class App extends Component {
           <Route path=  "/CustomerMenu/ordering" element={<Container />} />
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
-      <div className="Footer">
-      Footer
-      </div>
       </Router>
     );
   }
