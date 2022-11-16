@@ -40,16 +40,29 @@ class App extends Component {
     this.state = { apiResponse: "" };
   }
 
-  callAPI = () => {
-      fetch("http://localhost:3000/roster?id=2")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
+  // callAPI = () => {
+  //     fetch("http://localhost:3000/roster?id=2")
+  //     .then(updateUI(res.item_id));
+  //         .then(res => res.text())
+  //         .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
+  // }
+
+  // takes whatever is returned by the previous statement as input
+  // .then(function whatever(res) {
+  //   console.log(res);
+  // })
+
+  // onClick={() => console.log()}
+
+
+  callAPIAsync = async () => {
+    // console.log((await fetch("http://localhost:3000/roster?id=2")).text());
+    return (await fetch("http://localhost:3000/roster?id=2")).text();
   }
 
   render() {  
     return (  
       <Router>
-        
         <Routes>
           <Route path = "/" element = {<HomePage />}></Route>
 
@@ -57,11 +70,11 @@ class App extends Component {
           <Route path = "/ServerMenu/Checkout" element = {<ServerCheckout />}></Route>
           <Route path = "/ServerMenu/OrderSelect" element = {<Items />}></Route>
 
-          <Route path= "/Manager" element={<Home/>}/>
-          <Route path= "/Manager/sales" element={<Sales/>}/>
-          <Route path= "/Manager/inventory" element={<Inventory/>}/>
-          <Route path= "/Manager/employee" element={<Employee/>}/>
-          <Route path= "/Manager/accessibility" element={<Accessibility/>}/>
+          <Route path= "/manager" element={<Home/>}/>
+          <Route path="/manager/sales" element={<Sales/>}/>
+          <Route path="/manager/inventory" element={<Inventory/>}/>
+          <Route path="/manager/employee" element={<Employee/>}/>
+          <Route path="/manager/accessibility" element={<Accessibility/>}/>
 
           <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
           <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
@@ -70,9 +83,8 @@ class App extends Component {
           <Route path=  "/CustomerMenu/apps" element={<Apps />} />
           <Route path=  "/CustomerMenu/ordering" element={<Container />} />
 
-          <Route path= "*" element={<ErrorPage/>}/>
+          <Route path="*" element={<ErrorPage/>}/>
         </Routes>
-      
       </Router>
     );
   }

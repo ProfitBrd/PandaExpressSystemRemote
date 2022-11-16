@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "../index.css"
+import "../index2.css"
 
 // var callAPIAsyncNameToID = async (itemName) => {
 //     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
@@ -90,7 +90,7 @@ class TotalPrice extends Component   {
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <span id = "PriceSpan">Price: {this.state.price}</span>
+            <span id = "ServerPriceSpan">Price: {this.state.price}</span>
             // <div>Pending</div>
         )
     }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../App.css";
-import {Form} from './Form'
+import RosterDisplay from './RosterDisplay';
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
@@ -14,9 +14,30 @@ function EmployeeTabs() {
   const [changeName, setChangeName] = useState('John Doe');
   const [changeType, setChangeType] = useState('f');
 
+  const [RosterSummary, setRosterSummary] = useState('0');
+
 
   const toggleTab = (index) => {
     setToggleState(index);
+  };
+
+  const queryRosterSummary = async() => {
+    const promise = fetch(`http://localhost:3000/roster/summary`); 
+    const response = await promise;
+    const result = await response.json();
+    console.log(result);
+    setRosterSummary(result);
+  };
+
+  const addEmployee = async() => {
+    console.log("inserting "+ {name} + {id} + {type});
+    const promise = fetch(`http://localhost:3000/roster/add?id=${id}name=${name}manager=${type}`); 
+    const response = await promise;
+    const result = await response.json();
+    console.log("Added: " + {name} + {id} + {type});
+    setName("John Doe");
+    setID(0);
+    setType(0);
   };
 
   return (
@@ -47,13 +68,9 @@ function EmployeeTabs() {
           className={toggleState === 1 ? "content  active-content" : "content"}
         >
           <h2>Roster</h2>
-          <table>
-            <tr>
-              <td>Name</td>
-              <td>Position</td>
-              <td>ID</td>
-            </tr>
-          </table>
+          <button className="SubmitCritical" onClick={() => queryRosterSummary()}> View Roster</button>
+          <RosterDisplay rosterList={RosterSummary}/>
+          <p></p>
         </div>
 
         <div
@@ -83,11 +100,11 @@ function EmployeeTabs() {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
-                <option value="Manager">Manager</option>
-                <option value="Regular Employee">Regular Employee</option>
+                <option value="t">Manager</option>
+                <option value="f">Regular Employee</option>
               </select> 
               <p></p>
-              <button className="SubmitButton">Submit</button>
+              <button className="SubmitButton" onClick={() => addEmployee()}> Submit</button>
               <p>
                 {name}
                 {type}
