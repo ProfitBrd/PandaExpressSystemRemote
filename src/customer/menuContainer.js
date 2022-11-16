@@ -36,24 +36,24 @@ function menuContainer() {
                 {/* <Link to="/" className="optionBtn"> A la Carte </Link> */}
               </div>
               <main>
-                <ItemBox itemImg = {hsChicken} className = "img" itemName = {"honey_seasame_chicken"} itemPrice = {"$1"} itemType = {"1"} />
-                <ItemBox itemImg = {oChicken} className = "img" itemName = {"orange_chicken"} itemPrice = {"$2"} itemType = {"1"}/>
-                <ItemBox itemImg = {bpaSteak} className = "img" itemName = {"black_pepper_angus_steak"} itemPrice = {"$3"} itemType = {"1"} />
-                <ItemBox itemImg = {sbChicken} className = "img" itemName = {"string_bean_chicken_breast"} itemPrice = {"$4"} itemType = {"1"} />
-                <ItemBox itemImg = {sfChicken} className = "img" itemName = {"sweetfire_chicken_breast"} itemPrice = {"$5"} itemType = {"1"} />
-                <ItemBox itemImg = {bpChicken} className = "img" itemName = {"black_pepper_chicken"} itemPrice = {"$6"} itemType = {"1"} />
-                <ItemBox itemImg = {gtChicken} className = "img" itemName = {"grilled_teriyaki_chicken"} itemPrice = {"$7"} itemType = {"1"} />
-                <ItemBox itemImg = {beijBeef} className = "img" itemName = {"bejing_beef"} itemPrice = {"$8"} itemType = {"1"} />
-                <ItemBox itemImg = {hwShrimp} className = "img" itemName = {"honey_walnut_shrimp"} itemPrice = {"$9"} itemType = {"1"} />
-                <ItemBox itemImg = {mChicken} className = "img" itemName = {"mushroom_chicken"} itemPrice = {"$10"} itemType = {"1"} />
-                <ItemBox itemImg = {epTofu} className = "img" itemName = {"eggplant_tofu"} itemPrice = {"$11"} itemType = {"1"} />
-                <ItemBox itemImg = {mixedVeg} itemName = {"mixed_vegetables"} itemPrice = {"$1"} itemType = {"2"} />
-                <ItemBox itemImg = {chowMein} itemName = {"chow_mein"} itemPrice = {"$2"} itemType = {"2"} />
-                <ItemBox itemImg = {friedRice} itemName = {"fried_rice"} itemPrice = {"$3"} itemType = {"2"} />
-                <ItemBox itemImg = {whiteRice} itemName = {"white_steamed_rice"} itemPrice = {"$4"} itemType = {"2"} />
-                <ItemBox itemImg = {brownRice} itemName = {"brown_steamed_rice"} itemPrice = {"$5"} itemType = {"2"} />
-                <ItemBox itemImg = {ceRoll} itemName = {"chicken_egg_roll"} itemPrice = {"$1"} itemType = {"3"} />
-                <ItemBox itemImg = {cShrimp} itemName = {"crispy_shrimp"} itemPrice = {"$2"} itemType = {"3"} />
+                <ItemBox itemImg = {hsChicken} className = "img" itemName = {"honey_seasame_chicken"} itemTitle = {"Honey Seasame Chicken"} itemType = {"1"} />
+                <ItemBox itemImg = {oChicken} className = "img" itemName = {"orange_chicken"} itemTitle = {"Orange Chicken"} itemType = {"1"}/>
+                <ItemBox itemImg = {bpaSteak} className = "img" itemName = {"black_pepper_angus_steak"} itemTitle = {"Black Pepper Angus Steak"} itemType = {"1"} />
+                <ItemBox itemImg = {sbChicken} className = "img" itemName = {"string_bean_chicken_breast"} itemTitle = {"String Bean Chicken Breast"} itemType = {"1"} />
+                <ItemBox itemImg = {sfChicken} className = "img" itemName = {"sweetfire_chicken_breast"} itemTitle = {"Sweetfire Chicken Breast"} itemType = {"1"} />
+                <ItemBox itemImg = {bpChicken} className = "img" itemName = {"black_pepper_chicken"} itemTitle = {"Black Pepper Chicken"} itemType = {"1"} />
+                <ItemBox itemImg = {gtChicken} className = "img" itemName = {"grilled_teriyaki_chicken"} itemTitle = {"Grilled Teriyaki Chicken"} itemType = {"1"} />
+                <ItemBox itemImg = {beijBeef} className = "img" itemName = {"bejing_beef"} itemTitle = {"Bejing Beef"} itemType = {"1"} />
+                <ItemBox itemImg = {hwShrimp} className = "img" itemName = {"honey_walnut_shrimp"} itemTitle = {"Honey Walnut Shrimp"} itemType = {"1"} />
+                <ItemBox itemImg = {mChicken} className = "img" itemName = {"mushroom_chicken"} itemTitle = {"Mushroom Chicken"} itemType = {"1"} />
+                <ItemBox itemImg = {epTofu} className = "img" itemName = {"eggplant_tofu"} itemTitle = {"Eggplant Tofu"} itemType = {"1"} />   
+                <ItemBox itemImg = {mixedVeg} itemName = {"mixed_vegetables"} itemTitle = {"Mixed Vegetables"} itemType = {"2"} />
+                <ItemBox itemImg = {chowMein} itemName = {"chow_mein"} itemTitle = {"Chow Mein"} itemType = {"2"} />
+                <ItemBox itemImg = {friedRice} itemName = {"fried_rice"} itemTitle = {"Fried Rice"} itemType = {"2"} />
+                <ItemBox itemImg = {whiteRice} itemName = {"white_steamed_rice"} itemTitle = {"White Steamed Rice"} itemType = {"2"} />
+                <ItemBox itemImg = {brownRice} itemName = {"brown_steamed_rice"} itemTitle = {"Brown Steamed Rice"} itemType = {"2"} />      
+                <ItemBox itemImg = {ceRoll} itemName = {"chicken_egg_roll"} itemTitle = {"Chicken Egg Roll"} itemType = {"3"} />
+                <ItemBox itemImg = {cShrimp} itemName = {"crispy_shrimp"} itemTitle = {"Crispy Shrimp"} itemType = {"3"} />   
             </main>
         </div>
       </div>

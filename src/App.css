@@ -6,6 +6,13 @@ label {
   height: 30px;
 }
 
+table, th, td {
+  border: 1px solid black;
+  width: 1500px;
+  font-size:10px;
+  overflow:scroll;
+}
+
 input {
   height:25px;
   width:100px;
@@ -13,14 +20,37 @@ input {
 
 select {
   height: 25px;
-  width: 100px;
+  width: 200px;
+}
+
+.Sales {
+  width: 1600px;
+  height:900px;
+}
+
+.Employee-Dropdown {
+  align-items:center;
 }
 
 .SubmitButton {
-  height: 25px;
+  height: 30px;
   width: 100px;
   background-color: #c5292c;
   color:white;
+  display:block;
+}
+
+.SubmitCritical {
+  height: 30px;
+  width: 200px;
+  background-color: #c5292c;
+  color:white;
+  display:block;
+}
+
+.SubmitCritical:hover {
+  background-color: #6e3638;
+  transition:.7s;
 }
 
 .App-header {
@@ -74,6 +104,7 @@ button {
 }
 .active-content {
   display: block;
+  overflow:scroll;
 }
 
 .tabs {
@@ -94,6 +125,7 @@ button {
 .active-tabs  {
   background: white;
   border-bottom: 1px solid transparent;
+  overflow:scroll;
 }
 
 .active-tabs::before {
@@ -139,10 +171,11 @@ button {
 }
 
 .Parallax-Accessibility {
+  background-image: url('./panda-view.jpg');
   background-size:cover;
   min-height:900px;
   background-color:white;
-  font-size: 41px;
+  font-size: 30px;
   color:white;
   text-align:center;
 }
@@ -157,6 +190,13 @@ button {
 
 
 .Footer {
+  background-color:black;
+  font-size: 20px;
+  color:white;
+  height:150px;
+}
+
+.FooterFix {
   background-color:black;
   font-size: 20px;
   color:white;

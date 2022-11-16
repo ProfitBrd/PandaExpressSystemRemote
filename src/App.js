@@ -17,8 +17,8 @@ import ServerCheckout from './components/ServerCheckout';
 import ServerMenu from './components/ServerMenu';
 import Items from './components/Items';
 
-import CustomerCheckout from './components/CustomerCheckout';
 import CustomerMenu from './components/CustomerMenu';
+import CustomerCheckout from './components/CustomerCheckout';
 import Container from './customer/container';
 import Entree from "./customer/entreeOption";
 import Side from "./customer/sideOption";
@@ -70,7 +70,7 @@ class App extends Component {
           <Route path = "/ServerMenu/Checkout" element = {<ServerCheckout />}></Route>
           <Route path = "/ServerMenu/OrderSelect" element = {<Items />}></Route>
 
-          <Route path= "/manager" element={<Home/>}/>
+          <Route path="/manager" element={<Home/>}/>
           <Route path="/manager/sales" element={<Sales/>}/>
           <Route path="/manager/inventory" element={<Inventory/>}/>
           <Route path="/manager/employee" element={<Employee/>}/>
@@ -82,7 +82,7 @@ class App extends Component {
           <Route path=  "/CustomerMenu/sides" element={<Side />} />
           <Route path=  "/CustomerMenu/apps" element={<Apps />} />
           <Route path=  "/CustomerMenu/ordering" element={<Container />} />
-
+            
           <Route path="*" element={<ErrorPage/>}/>
         </Routes>
       </Router>
@@ -91,42 +91,3 @@ class App extends Component {
 }
 
 export default App;
-
-// class App extends Component {
-
-//   constructor(props) {
-//     super(props);
-//     this.state = { apiResponse: "t" };
-//   }
-
-//   callAPI = () => {
-//       fetch("http://localhost:3000/roster?id=2")
-//           .then(res => res.text())
-//           .then(res => this.setState({ apiResponse: res }, () => console.log(res)));
-//   }
-
-//   render() {  
-//     return (
-//       <div className="App">
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>
-//             Edit <code>src/App.js</code> and save to reload.
-//           </p>
-//           <a
-//             className="App-link"
-//             href="https://reactjs.org"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//           >
-//             Learn React
-//           </a>
-//           <p className="App-intro">{this.state.apiResponse}</p>
-//           <button onClick={this.callAPI}>Make Call</button>
-//         </header>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;

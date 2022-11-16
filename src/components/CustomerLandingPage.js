@@ -17,7 +17,7 @@ const CustomerLandingPage = () => {
   return (
     <Router>
         <Routes>
-            <Route path = "/" element = {<CustomerMenu />}></Route> {/*<---change this to the homescreen*/}
+            <Route path = "/Home" element = {<CustomerMenu />}></Route> {/*<---change this to the homescreen*/}
             <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
             <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
             <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
