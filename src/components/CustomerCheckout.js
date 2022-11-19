@@ -7,15 +7,13 @@ import CustomerTotalPrice from './CustomerTotalPrice';
 import CustomerCheckoutButton from './CustomerCheckoutButton';
 
 
-const CustomerCheckout = () => {
+const CustomerCheckout = (props) => {
   
-  let navigate = useNavigate();
   return (
     <div class = "CheckoutScreen">
-        <div class = "CustomerCheckoutOrder"><CustomerDishChoiceCurrentOrder /></div>
         <div id = "Checkout"><CustomerCheckoutButton /></div>
-        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {navigate("/CustomerMenu")}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        <div id = "Price"><CustomerTotalPrice /></div>
+        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {props.homeView()}}><CustomerDishChoiceButton Name = "Go Back" /></div>
+        <div id = "Price">{`Final total: ${props.price}`}</div>
     </div>
     )
     

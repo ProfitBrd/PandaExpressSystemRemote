@@ -6,7 +6,6 @@ import '../../index.css';
 
 
 const CustomerMenu = (props) => {
-  let navigate = useNavigate();
 
   return (
     <div class = "CustomerMenuGrid">
@@ -15,7 +14,7 @@ const CustomerMenu = (props) => {
       <div class = "CustomerMenuDishChoiceButton" id = "Plate" onClick={() => props.createContainer("plate")}><CustomerDishChoiceButton Name = "Plate"/></div>
       <div class = "CustomerMenuDishChoiceButton" id = "BiggerPlate" onClick={() => props.createContainer("bigger plate")}><CustomerDishChoiceButton Name = "Bigger Plate"/></div>
       {/* <div class = "CustomerMenuDishChoiceButton" id = "IndividualItems"><CustomerDishChoiceButton Name = "Indiv. Items"/></div> */}
-      <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => {navigate("Checkout")}}><CustomerDishChoiceButton Name = "Checkout"/></div>
+      <div class = "CustomerMenuDishChoiceButton" id = "CheckoutScreen" onClick={() => props.checkoutView()}><CustomerDishChoiceButton Name = "Checkout"/></div>
         
         
     </div>
