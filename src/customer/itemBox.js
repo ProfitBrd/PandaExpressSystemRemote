@@ -13,18 +13,7 @@ var test = [[[""]]];
 
 
 
-const addToCart = (itemToAdd, index) => {
-  var mylistoforders = JSON.parse(localStorage.getItem('CurrentOrder'));
-
-  
-  var thirdindex = mylistoforders[mylistoforders.length-1][index].length;
-  
-  mylistoforders[mylistoforders.length-1][index][thirdindex] = itemToAdd;
-
-  localStorage.setItem('CurrentOrder', JSON.stringify(mylistoforders));
-}
-
-function itemBox({ itemImg, itemName, itemPrice, itemType }) {
+function itemBox({ itemImg, itemName, itemPrice, itemType, addToCart }) {
 
   return (
     <div className="details">

@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomerDishChoiceCurrentOrder from "./CustomerDishChoiceCurrentOrder";
+import CustomerDishChoiceCurrentOrder from "./customer/CustomerDishChoiceCurrentOrder";
 import '../index.css';
 import CustomerDishChoiceButton from './CustomerDishChoiceButton';
 import { useNavigate } from 'react-router-dom';

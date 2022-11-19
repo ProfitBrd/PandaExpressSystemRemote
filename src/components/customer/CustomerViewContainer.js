@@ -1,0 +1,160 @@
+import React from 'react'
+import CustomerDishChoiceCurrentOrder from './CustomerDishChoiceCurrentOrder';
+import Container from "../../customer/container";
+import CustomerMenu from './CustomerMenu';
+
+class CustomerViewContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentOrder: [],
+            price: "",
+            screen: "container"
+        };
+    }
+
+    callAPIAsyncGetPrice = async (dishId, idString) => {
+        //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
+        const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
+        const response = await promise;
+        const result = await response.json();
+        return result.price;
+    }
+
+    returnPrice = async (MyListOfOrders) => {
+        var totalPrice = 0;
+        var timesRun = 0;
+        console.log("LENGTH: " + MyListOfOrders.length);
+        for (var i = 0; i < MyListOfOrders.length; i++){
+            console.log("RUNNING");
+            var dishtype = MyListOfOrders[i][0][0];
+            var dish_id = 1;
+            if(dishtype == "bowl"){
+                dish_id = 1;
+            }
+            else if(dishtype == "plate"){
+                dish_id = 2;
+            }
+            else if(dishtype == "bigger plate"){
+                dish_id = 3;
+            }
+            var everythingInTheDish = [];
+            for (var j = 1; j < MyListOfOrders[i].length; j++){
+                // if (MyListOfOrders[i][j].length == 1){
+                //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
+                // }
+                // else{
+                    for (var k = 0; k < MyListOfOrders[i][j].length; k++){
+                        if (MyListOfOrders[i][j][k] === ""){
+                            continue;
+                        }
+                        else{
+                            //push all the id's
+                            everythingInTheDish.push(MyListOfOrders[i][j][k]);
+                            timesRun = timesRun + 1;
+                        }
+                    }
+                // }
+            }
+            if (timesRun == 0) {
+                totalPrice = totalPrice + await this.callAPIAsyncGetPrice(dish_id, "");
+            }
+            if (timesRun > 0){
+    
+                var resultString = "";
+                if (timesRun > 1){
+                    for (var idx = 0; idx < everythingInTheDish.length; idx++){
+                        resultString += "&item=" + everythingInTheDish[idx];
+                    }
+                }
+                else{
+                    resultString += "&item=" + everythingInTheDish[0];
+                }
+                // console.log("Everything in the string sending to API: " + resultString);
+                totalPrice = totalPrice + await this.callAPIAsyncGetPrice(dish_id, resultString);
+                console.log("New total price: " + totalPrice);
+            }
+    
+        }
+        return totalPrice.toFixed(2);
+    }
+
+    async updatePrice(order) {
+        const newPrice = await this.returnPrice(order);
+        this.setState((prevState) => {
+            return ({
+                ...prevState,
+                price: newPrice
+            })
+        });
+
+    }
+
+    updateOrder(order) {
+        console.log("trying to update w" + order);
+        this.setState((prevState) => {
+            return ({
+                ...prevState,
+                currentOrder: order,
+                price: "..."
+            })
+        });
+        this.updatePrice(order);
+    }
+
+    updateScreen(screen) {
+        this.setState((prevState) => {
+            return ({
+                ...prevState,
+                screen
+            })
+        });
+    }
+
+    createContainer(containerType) {
+            var orderArray = [];
+            var dishArray = [containerType];
+            var entreeArray = [];
+            var sidesArray = [];
+            var appetizers = [];
+            orderArray.push(dishArray, entreeArray, sidesArray, appetizers);
+            let mylistoforders = this.state.currentOrder;
+            mylistoforders.push(orderArray);
+            this.updateOrder(mylistoforders);
+            this.updateScreen("ordering");
+    }
+
+    addToCart = (itemToAdd, index) => {
+        var mylistoforders = this.state.currentOrder;
+      
+        
+        var thirdindex = mylistoforders[mylistoforders.length-1][index].length;
+        
+        mylistoforders[mylistoforders.length-1][index][thirdindex] = itemToAdd;
+      
+        this.updateOrder(mylistoforders);
+      }
+
+    homeView() {
+        this.updateScreen("container");
+    }
+
+    render() {
+        let mainView;
+        if(this.state.screen === "container") 
+            mainView = <CustomerMenu createContainer={(ct) => this.createContainer(ct)}/>;
+        else if (this.state.screen === "ordering")
+            mainView = <Container addToCart={(itemToAdd, itemType) => this.addToCart(itemToAdd, itemType)}  goBack={()=> this.homeView()}/>;
+        else // checkout
+            mainView = null;
+        return (
+            <div id="viewContainer">
+                <CustomerDishChoiceCurrentOrder order={this.state.currentOrder} price={this.state.price} updateOrderCallback={(order) => this.updateOrder(order)}/>
+                {mainView}
+            </div>
+        );
+    }
+}
+
+export default CustomerViewContainer;

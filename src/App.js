@@ -17,7 +17,7 @@ import ServerCheckout from './components/ServerCheckout';
 import ServerMenu from './components/ServerMenu';
 import Items from './components/Items';
 
-import CustomerMenu from './components/CustomerMenu';
+import CustomerViewContainer from './components/customer/CustomerViewContainer';
 import CustomerCheckout from './components/CustomerCheckout';
 import Container from './customer/container';
 import Entree from "./customer/entreeOption";
@@ -76,7 +76,7 @@ class App extends Component {
           <Route path="/manager/employee" element={<Employee/>}/>
           <Route path="/manager/accessibility" element={<Accessibility/>}/>
 
-          <Route path = "/CustomerMenu" element = {<CustomerMenu />}></Route>
+          <Route path = "/CustomerMenu" element = {<CustomerViewContainer />}></Route>
           <Route path = "/CustomerMenu/Checkout" element = {<CustomerCheckout />}></Route>
           <Route path=  "/CustomerMenu/entrees" element={<Entree />} />
           <Route path=  "/CustomerMenu/sides" element={<Side />} />
