@@ -11,10 +11,11 @@ var callAPIAsyncGetPrice = async (dishId, idString) => {
 
 const returnPrice = async (MyListOfOrdersArray, dishName) => {
     var totalPrice = 0;
-    var timesRun = 0;
+    var resultString = "";
+    var dish_id = 1;
+    var theIfLoopRan = 0;
     for (var i = 1; i < MyListOfOrdersArray.length; i++){
-
-        var dish_id = 1;
+        var timesRun = 0;
         if(dishName == "bowl"){
             dish_id = 1;
         }
@@ -36,7 +37,7 @@ const returnPrice = async (MyListOfOrdersArray, dishName) => {
             }
         }
         if (timesRun > 0){
-            var resultString = "";
+            
             if (timesRun > 1){ //checking to see if array so doesn't iterate over every letter
                 for (var idx = 0; idx < everythingInTheDish.length; idx++){
                     resultString += "&item=" + everythingInTheDish[idx];
@@ -46,9 +47,11 @@ const returnPrice = async (MyListOfOrdersArray, dishName) => {
                 resultString += "&item=" + everythingInTheDish[0];
             }
             // console.log("Everything in the string sending to API: " + resultString);
-            totalPrice = totalPrice + await callAPIAsyncGetPrice(dish_id, resultString);
-            console.log("New total price: " + totalPrice);
+            theIfLoopRan = 1; //moved the statement outside because it should only run once per dish (MyListOfOrdersArray) is all a single dish
         }
+    }
+    if (theIfLoopRan == 1){
+        totalPrice = await callAPIAsyncGetPrice(dish_id, resultString);
     }
     return totalPrice.toFixed(2);
 }
@@ -132,7 +135,7 @@ const orderTheItems = async (MyListOfOrders) => {
 
         // var sidesResultString = "";
         var nextID = (await (await fetch("http://localhost:3000/order_history/nextID")).json()).nextID;
-        var price = await returnPrice(MyListOfOrders, MyListOfOrders[i][0][0]); //pass this in as the CurrentOrder[i]
+        var price = await returnPrice(MyListOfOrders[i], MyListOfOrders[i][0][0]); //pass this in as the CurrentOrder[i]
         var date = "2022-11-25";
         console.log(`Order Sending: transaction_id=${nextID}&employee_id=0&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
         //await fetch(`http://localhost:3000/order_history/add?transaction_id=${nextID}&employee_id=-1&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
@@ -141,25 +144,25 @@ const orderTheItems = async (MyListOfOrders) => {
 }
 
 
-class CustomerCheckoutButton extends Component   {
+// class CustomerCheckoutButton extends Component   {
+const CustomerCheckoutButton = (props) => {
 
+    // constructor(props) {
+    //     super(props);
+    // }
 
-    constructor(props) {
-        super(props);
-    }
+    // async componentDidMount() {
+    //     // const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
+    //     // const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
+    // }
 
-    async componentDidMount() {
-        // const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
-        // const price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
-    }
-
-    render(){
-        return (
-            // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <div id = "CheckoutText" onClick = {() => {orderTheItems(JSON.parse(localStorage.getItem('CurrentOrder')))}}>Checkout</div>
-            // <div>Pending</div>
-        )
-    }
+    // render(){
+    return (
+        // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
+        <div id = "CheckoutText" onClick = {() => {orderTheItems(props.order)}}>Checkout</div>
+        // <div>Pending</div>
+    )
+    // }
 }
 
 export default CustomerCheckoutButton

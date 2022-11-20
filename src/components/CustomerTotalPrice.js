@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 import "../index.css"
 
-// var callAPIAsyncNameToID = async (itemName) => {
-//     (await fetch(`http://localhost:3000/inventory/${itemName}`)).text();
-// }
-
 var callAPIAsyncGetPrice = async (dishId, idString) => {
     //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
     const promise = fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`);
