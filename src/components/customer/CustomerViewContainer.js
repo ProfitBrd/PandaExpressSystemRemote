@@ -149,14 +149,14 @@ class CustomerViewContainer extends React.Component {
     render() {
         let mainView;
         if(this.state.screen === "container") 
-            mainView = <CustomerMenu createContainer={(ct) => this.createContainer(ct)} checkoutView={() => this.checkoutView()}/>;
+            mainView = <CustomerMenu createContainer={(ct) => this.createContainer(ct)}  checkoutView={() => this.checkoutView()}/>;
         else if (this.state.screen === "ordering")
             mainView = <Container addToCart={(itemToAdd, itemType) => this.addToCart(itemToAdd, itemType)}  goBack={()=> this.homeView()}/>;
         else // checkout
             mainView = <CustomerCheckout homeView = {() => this.homeView()} price={this.state.price}/>;
         return (
             <div id="viewContainer">
-                <CustomerDishChoiceCurrentOrder class = "CustomerMenuCurrentOrder" order={this.state.currentOrder} price={this.state.price} updateOrderCallback={(order) => this.updateOrder(order)}/>
+                <CustomerDishChoiceCurrentOrder order={this.state.currentOrder} price={this.state.price} updateOrderCallback={(order) => this.updateOrder(order)}/>
                 {mainView}
             </div>
         );

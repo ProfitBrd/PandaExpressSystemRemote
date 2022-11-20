@@ -11,9 +11,9 @@ const CustomerCheckout = (props) => {
   
   return (
     <div class = "CheckoutScreen">
-        <div id = "Checkout"><CustomerCheckoutButton /></div>
-        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {props.homeView()}}><CustomerDishChoiceButton Name = "Go Back" /></div>
-        <div id = "Price">{`Final total: ${props.price}`}</div>
+        <div class = "CustomerCheckoutButton" id = "Checkout"><CustomerCheckoutButton /></div>
+        <div class = "CustomerCheckoutButton" id = "GoBack" onClick={() => {props.homeView()}}><CustomerDishChoiceButton Name = "Go&nbsp;Back" /></div>
+        <div id = "Price">{`Final Total: ${props.price}`}</div>
     </div>
     )
     
