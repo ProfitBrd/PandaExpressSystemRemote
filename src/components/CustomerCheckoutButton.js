@@ -9,45 +9,35 @@ var callAPIAsyncGetPrice = async (dishId, idString) => {
     return result.price;
 }
 
-const returnPrice = async (MyListOfOrders) => {
+const returnPrice = async (MyListOfOrdersArray, dishName) => {
     var totalPrice = 0;
     var timesRun = 0;
-    console.log("LENGTH: " + MyListOfOrders.length);
-    for (var i = 0; i < MyListOfOrders.length; i++){
-        console.log("RUNNING");
-        var dishtype = MyListOfOrders[i][0][0];
+    for (var i = 1; i < MyListOfOrdersArray.length; i++){
+
         var dish_id = 1;
-        if(dishtype == "bowl"){
+        if(dishName == "bowl"){
             dish_id = 1;
         }
-        else if(dishtype == "plate"){
+        else if(dishName == "plate"){
             dish_id = 2;
         }
-        else if(dishtype == "bigger plate"){
+        else if(dishName == "bigger plate"){
             dish_id = 3;
         }
         var everythingInTheDish = [];
-        for (var j = 1; j < MyListOfOrders[i].length; j++){
-            // if (MyListOfOrders[i][j].length == 1){
-            //     everythingInTheDish.push(MyListOfOrders[i][j][0]);
-            // }
-            // else{
-                for (var k = 0; k < MyListOfOrders[i][j].length; k++){
-                    if (MyListOfOrders[i][j][k] === ""){
-                        continue;
-                    }
-                    else{
-                        //push all the id's
-                        everythingInTheDish.push(MyListOfOrders[i][j][k]);
-                        timesRun = timesRun + 1;
-                    }
-                }
-            // }
+        for (var j = 0; j < MyListOfOrdersArray[i].length; j++){
+            if (MyListOfOrdersArray[i][j] === ""){
+                continue;
+            }
+            else{
+                //push all the id's
+                everythingInTheDish.push(MyListOfOrdersArray[i][j]);
+                timesRun = timesRun + 1;
+            }
         }
         if (timesRun > 0){
-
             var resultString = "";
-            if (timesRun > 1){
+            if (timesRun > 1){ //checking to see if array so doesn't iterate over every letter
                 for (var idx = 0; idx < everythingInTheDish.length; idx++){
                     resultString += "&item=" + everythingInTheDish[idx];
                 }
@@ -59,7 +49,6 @@ const returnPrice = async (MyListOfOrders) => {
             totalPrice = totalPrice + await callAPIAsyncGetPrice(dish_id, resultString);
             console.log("New total price: " + totalPrice);
         }
-
     }
     return totalPrice.toFixed(2);
 }
@@ -143,10 +132,10 @@ const orderTheItems = async (MyListOfOrders) => {
 
         // var sidesResultString = "";
         var nextID = (await (await fetch("http://localhost:3000/order_history/nextID")).json()).nextID;
-        var price = await returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')));
-        var date = "2022-10-25";
+        var price = await returnPrice(MyListOfOrders, MyListOfOrders[i][0][0]); //pass this in as the CurrentOrder[i]
+        var date = "2022-11-25";
         console.log(`Order Sending: transaction_id=${nextID}&employee_id=0&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
-        await fetch(`http://localhost:3000/order_history/add?transaction_id=${nextID}&employee_id=-1&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
+        //await fetch(`http://localhost:3000/order_history/add?transaction_id=${nextID}&employee_id=-1&date=${date}&type_of_dish=${dishtype}&entree_dish=${entreesResultString}&entree_amt_servings=${entreesAmountResultString}&side_ingredients=${sidesResultString}&side_amt_servings=${sidesAmountResultString}&appetizer_ingredients=${appetizersResultString}&appetizer_amt_servings=${appetizersAmountResultString}&price=${price}`);
         console.log("Sent");
     }
 }
