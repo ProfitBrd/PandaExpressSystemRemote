@@ -13,13 +13,13 @@ var test = [[[""]]];
 
 
 
-function itemBox({ itemImg, itemName, itemPrice, itemType, addToCart }) {
+function itemBox({ itemImg, itemName, itemTitle, itemType, addToCart }) {
 
   return (
     <div className="details">
       <img src={itemImg} alt="" className="imgDetails" />
       <div className="foodName">
-        <h2>{itemName}</h2>
+        <h2>{itemTitle}</h2>
       </div>
 
       <div className="selectBtn">
