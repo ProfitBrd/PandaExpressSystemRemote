@@ -54,8 +54,8 @@ body {
 }
 .CustomerMenuGrid{
   display:grid;
-	grid-template-rows: 1fr 1fr 30%;
-	grid-template-columns: 40% 28% 28%;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 48% 48%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
   background-image: url('pics/RedBackground.jpg');
@@ -85,23 +85,23 @@ body {
 }
 #Bowl{
   grid-row: 1 / span 1;
-	grid-column: 2 / span 1;
+	grid-column: 1 / span 1;
 }
 #Plate{
   grid-row: 1 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
 }
 #BiggerPlate{
   grid-row: 2 / span 1;
-	grid-column: 2 / span 1;
+	grid-column: 1 / span 1;
 }
 #IndividualItems{
   grid-row: 2 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
 }
 #CheckoutScreen{
   grid-row: 2 / span 1;
-	grid-column: 3 / span 1;
+	grid-column: 2 / span 1;
   font-size: max(1.2vw,10px);
 }
 
@@ -126,6 +126,20 @@ body {
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
 }
+#viewContainer{
+  display:grid;
+	grid-template-rows: 100vh;
+	grid-template-columns: 40% 58%;
+	grid-gap: 0px 1%;
+	block-size:fit-content;
+  background-image: url('pics/RedBackground.jpg');
+  /* Make root have the background image and cover it */
+  height: 100%
+}
+
+
+
+
 
 /* Checkout Screen */
 .CheckoutScreen{
