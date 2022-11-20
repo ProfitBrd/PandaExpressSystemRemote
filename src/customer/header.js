@@ -20,7 +20,7 @@ function header(props) {
                 <button className="optionBtn" onClick={() => props.callback("sides")}> Sides </button>
                 <button className="optionBtn" onClick={() => props.callback("appetizers")}> Appetizers </button>
                 {/* <Link to="/" className="optionBtn"> A la Carte </Link> */}
-              </div>
+        </div>
     </div>
 
 

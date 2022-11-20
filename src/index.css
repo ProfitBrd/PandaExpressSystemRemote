@@ -1,16 +1,6 @@
 html {
-
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -41,6 +31,12 @@ body::-webkit-scrollbar {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
@@ -102,7 +98,9 @@ body {
 #CheckoutScreen{
   grid-row: 2 / span 1;
 	grid-column: 2 / span 1;
-  font-size: max(1.2vw,10px);
+  padding: 25px;
+  padding-top: 20%;
+  /* font-size: max(1.2vw,10px); */
 }
 
 
@@ -144,13 +142,14 @@ body {
 /* Checkout Screen */
 .CheckoutScreen{
   display:grid;
-	grid-template-rows: 1fr 50% 25%;
-	grid-template-columns: 13% 33% 33% 13%;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 48% 48%;
 	grid-gap: 0px 2%;
 	block-size:fit-content;
   background-image: url('pics/RedBackground.jpg');
+  margin: auto;
 }
-.CustomerCheckoutOrder{
+/* .CustomerCheckoutOrder{
   grid-row: 1 / span 1;
 	grid-column: 2 / span 2;
 
@@ -168,7 +167,7 @@ body {
   font-size: max(1.5vw, 15px);
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
-}
+} */
 .CustomerCheckoutButton {
   background-color: var(--CustomerDishChoiceButtonBackgroundColor);
   border: none;
@@ -189,22 +188,24 @@ body {
   color: var(--CustomerDishChoiceButtonTextHoverColor);
   cursor: default;
 }
-#Checkout{
-  grid-row: 3 / span 1;
-	grid-column: 3 / span 1;
 
-  padding-top: 5%;
-}
-#GoBack{
-  grid-row: 3 / span 1;
+
+#Checkout{
+  grid-row: 2 / span 1;
 	grid-column: 2 / span 1;
 }
-#Price{
+#GoBack{
   grid-row: 2 / span 1;
-  grid-column: 2 / span 2;
-  padding: 10px;
+	grid-column: 1 / span 1;
+  padding-right: max(90px, 5vw);
+  padding-left: 25px;
+}
+#Price{
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 2;
+  padding: 20px;
   margin:auto;
-  font-size: max(1.2vw,15px);
+  font-size: max(1.2vw,25px);
   border-radius: 12px;
   border: 2px solid var(--CustomerDishChoiceButtonEdgeColor);
   background-color: var(--CustomerCurrentOrderBackgroundColor)
@@ -213,12 +214,13 @@ body {
   font-size: max(2vw,20px);
 }
 #CheckoutText{
-  padding-top: auto;
+  padding-top: max(20px, 1.9vw);
   text-decoration: none;
   text-align: center;
   font-size: max(2vw,25px);
   border-radius: 12px;
   transition-duration: 0.4s;
+  font-weight: bold;
 }
 
 

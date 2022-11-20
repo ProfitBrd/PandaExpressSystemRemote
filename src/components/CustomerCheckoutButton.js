@@ -9,11 +9,6 @@ var callAPIAsyncGetPrice = async (dishId, idString) => {
     return result.price;
 }
 
-var addToOrderHistory = async (dishId, idString) => {
-    //console.log((await (await fetch(`http://localhost:3000/dish_list/price?dish_id=${dishId}${idString}`)).json()));
-    const promise = fetch(`http://localhost:3000/order_history/price?dish_id=${dishId}${idString}`);
-}
-
 const returnPrice = async (MyListOfOrders) => {
     var totalPrice = 0;
     var timesRun = 0;
@@ -172,7 +167,7 @@ class CustomerCheckoutButton extends Component   {
     render(){
         return (
             // <div>{returnPrice(JSON.parse(localStorage.getItem('CurrentOrder')))}</div>
-            <div class = "CustomerCheckoutButton" id = "CheckoutText" onClick = {() => {orderTheItems(JSON.parse(localStorage.getItem('CurrentOrder')))}}>Checkout</div>
+            <div id = "CheckoutText" onClick = {() => {orderTheItems(JSON.parse(localStorage.getItem('CurrentOrder')))}}>Checkout</div>
             // <div>Pending</div>
         )
     }
