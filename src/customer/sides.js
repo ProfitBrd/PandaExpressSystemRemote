@@ -1,6 +1,6 @@
 import React from "react";
 import ItemBox from "./itemBox";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "./menuContainer.css";
 // item images
 import mixedVeg from './mixedVeg.png';

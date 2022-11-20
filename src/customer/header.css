@@ -1,5 +1,6 @@
 .header{
     background-color:  black;
+    position: relative;
 }
 
 .img {
@@ -9,11 +10,8 @@
     width: 10%;
     height: 10%;
 }
-.optionBtn {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    padding: 5px 15px;
-    margin: 0px 5px;
-  }
+
+.addToCart {
+    position: absolute;
+    top: 0px;
+}
