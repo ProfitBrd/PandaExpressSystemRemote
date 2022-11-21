@@ -1,12 +1,9 @@
-  .menuContainer .menuItems::-webkit-scrollbar {
-    display: none;
-  }  
-
   .menuContainer {
-    display: flex;
     padding-top: 20px;
     background-color: #8b0909;
     width: 100%;
+    overflow: 'auto';
+    border: 20px solid #8b0909;
   }
 
   .menuContainer .options {
@@ -16,7 +13,6 @@
 
   .menuContainer .menuItems {
     padding-left: 20px;
-    overflow-y: scroll;
   }
   
   .menuContainer .menuItems .options {
@@ -30,7 +26,7 @@
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
-    background-color: #000000;
+    background-color: #8b0909;
     color: white;
     border: 2px solid #000000;
     padding: 5px 15px;
@@ -41,7 +37,9 @@
   .options .optionBtn:hover, .options .optionBtn:focus {
     background: #000000;
     border: none;
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;;
+    transition: 0.5s ease-in-out;
   }
   
   .menuContainer .menuItems main {

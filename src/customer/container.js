@@ -26,7 +26,7 @@ class Container extends React.Component {
       content = <Entrees addToCart={(itemToAdd, index) => this.props.addToCart(itemToAdd, index)}/>
     else if (this.state.view === "sides")
       content = <Sides addToCart={(itemToAdd, index) => this.props.addToCart(itemToAdd, index)}/>
-    else if (this.state.view === "entrees")
+    else if (this.state.view === "apps")
       content = <Appetizers addToCart={(itemToAdd, index) => this.props.addToCart(itemToAdd, index)}/>
     return (
       <div className="container">
