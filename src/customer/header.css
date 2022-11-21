@@ -1,6 +1,7 @@
 .header{
     background-color:  black;
     position: relative;
+    border: 20px solid #8b0909;
 }
 
 .img {

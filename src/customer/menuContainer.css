@@ -1,10 +1,9 @@
   .menuContainer {
-    display: flex;
     padding-top: 20px;
     background-color: #8b0909;
     width: 100%;
     overflow: 'auto';
-    height: 'inherit';
+    border: 20px solid #8b0909;
   }
 
   .menuContainer .options {
@@ -38,7 +37,9 @@
   .options .optionBtn:hover, .options .optionBtn:focus {
     background: #000000;
     border: none;
-    color: rgb(255, 255, 255)
+    color: rgb(255, 255, 255);
+    border: 1px solid #ffffff;;
+    transition: 0.5s ease-in-out;
   }
   
   .menuContainer .menuItems main {
