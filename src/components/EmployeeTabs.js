@@ -111,7 +111,7 @@ function EmployeeTabs() {
                 <option value="0">Regular Employee</option>
               </select> 
               <p></p>
-              <button className="SubmitButton" onClick={() => testLog()}> Submit</button>
+              <button className="SubmitButton" onClick={() => addEmployee()}> Submit</button>
               <p>
                 {name}
                 {type}
