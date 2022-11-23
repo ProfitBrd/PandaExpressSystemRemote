@@ -38,6 +38,17 @@ Route: /inventory?name={name}
 Ex: http://localhost:3000/inventory?name=black_pepper_angus_steak
 Ex Response: {"item_id":3,"item_name":"black_pepper_angus_steak","servings":"12.00","restock_quantity":300,"item_price":"4.02","food_type":"entree","minimum_amount":50}
 
+#### Add Item to Inventory
+Route:
+/inventory/add?id={item_id}&name={item_name}&servings={servings}&restock_quantity={restock_quantity}&price={item_price}&food_type={food_type}&minimum_amount={minimum_amount}
+Ex: http://localhost:3000/inventory/add?id21=&name=testname&servings=10&restock_quantity=30&price=3.21&food_type=entree&minimum_amount=50
+Ex Response: No response
+
+#### Remove Item From Inventory
+Route: /innentory/delete?name={item_name}
+Ex: http://localhost:3000/inventory/delete?name=testname
+Ex Response: No response
+
 #### Subtract Servings From Item
 Route: /inventory/subtract?id={id}&servings={number of servings}
 Ex: http://localhost:3000/inventory/subtract?id=3&servings=1
