@@ -1,6 +1,5 @@
-import { useState } from "react";
-import "../App.css";
 import RosterDisplay from './RosterDisplay';
+import {useState} from 'react';
 
 // https://www.w3schools.com/html/html_tables.asp
 // table 
@@ -8,10 +7,10 @@ import RosterDisplay from './RosterDisplay';
 function EmployeeTabs() {
   const [toggleState, setToggleState] = useState(1);
   const [name, setName] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('0');
   const [id, setID] = useState('0');
   const [changeID, setChangeID] = useState('0');
-  const [changeName, setChangeName] = useState('John Doe');
+  const [changeName, setChangeName] = useState('');
   const [changeType, setChangeType] = useState('f');
 
   const [RosterSummary, setRosterSummary] = useState('0');
@@ -31,7 +30,7 @@ function EmployeeTabs() {
 
   const addEmployee = async() => {
     console.log("inserting "+ {name} + {id} + {type});
-    const promise = fetch(`http://localhost:3000/roster/add?id=${id}name=${name}manager=${type}`); 
+    const promise = fetch(`http://localhost:3000/roster/add?id=${id}&name=${name}&manager=${type}`); 
     const response = await promise;
     const result = await response.json();
     console.log("Added: " + {name} + {id} + {type});
@@ -39,6 +38,14 @@ function EmployeeTabs() {
     setID(0);
     setType(0);
   };
+  /*
+  const testLog = async() => {
+    console.log("HERE");
+    console.log("$" + name);
+    console.log(type);
+    console.log(id);
+  };
+  */
 
   return (
     <div className="container">
@@ -100,11 +107,11 @@ function EmployeeTabs() {
                 value={type}
                 onChange={(e) => setType(e.target.value)}
               >
-                <option value="t">Manager</option>
-                <option value="f">Regular Employee</option>
+                <option value="1">Manager</option>
+                <option value="0">Regular Employee</option>
               </select> 
               <p></p>
-              <button className="SubmitButton" onClick={() => addEmployee()}> Submit</button>
+              <button className="SubmitButton" onClick={() => testLog()}> Submit</button>
               <p>
                 {name}
                 {type}
