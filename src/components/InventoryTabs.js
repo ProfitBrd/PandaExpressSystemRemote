@@ -62,6 +62,18 @@ function InventoryTabs() {
     }
   };
 
+  const deleteItem = async() => {
+    var selected = document.getElementById("selectedItemDiv").innerHTML;
+    /*
+    TODO fix after edited
+    if (selected != "") {
+      const promise = fetch(`http://localhost:3000/inventory/delete?id=${selected}`); 
+      const response = await promise;
+      setUpdateItemAmount(0);
+    }
+    */
+  };
+
   const queryInventory = async() => {
     const promise = fetch(`http://localhost:3000/inventory/summary`); 
     const response = await promise;
@@ -81,6 +93,19 @@ function InventoryTabs() {
   // reset values to 0
   // setname ... 0
   const addItem = async() => {
+    const firstPromise = fetch(`http://localhost:3000/inventory/nextID`); 
+    const firstResponse = await firstPromise;
+    const result = await firstResponse.json();
+    var newID = result.nextID;
+    console.log("inserting "+ name, newID, price, initial, restock, critical, type);
+    const promise = fetch(`http://localhost:3000/inventory/add?id=${newID}&name=${name}&servings=${initial}&restock_quantity=${restock}&price=${price}&food_type=${type}&minimum_amount=${critical}`); 
+    const response = await promise;
+    setName("");
+    setPrice(0);
+    setInitial(0);
+    setRestock(0);
+    setType('entree');
+    setCritical(0);
   };
 
 
@@ -208,7 +233,13 @@ function InventoryTabs() {
             <button 
               className="SubmitCritical"
               onClick={() => updateServings()}
+              id="update"
               >Submit</button>
+            <button 
+              className="SubmitCritical"
+              onClick={() => deleteItem()}
+              id="delete"
+              >Delete</button>
         </div>
       </div>
     </div>
