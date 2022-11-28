@@ -35,6 +35,36 @@ router.get('/', (req, res) => {
 });
 
 // TODO: add new item to inventory
+router.get('/add', (req, res) => {
+    let item_id = req.query.id;
+    let item_name=req.query.name; 
+    let servings=req.query.servings; 
+    let restock_quantity=req.query.restock_quantity; 
+    let item_price=req.query.price; 
+    let food_type=req.query.food_type; 
+    let minimum_amount = req.query.minimum_amount;
+
+    const query = `INSERT INTO inventory(item_id,item_name,servings,restock_quantity,item_price,food_type,minimum_amount) VALUES (${item_id},'${item_name}',${servings},${restock_quantity},${item_price},'${food_type}',${minimum_amount})`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            res.status(200).end();
+            //res.render('user', data);
+        });
+});
+
+router.get('/delete', (req, res) => {
+    let name = req.query.name;
+    const query = `DELETE FROM inventory WHERE item_name = '${name}'`;
+    console.log(`Performing query: ${query}`);
+    pool
+        .query(query)
+        .then(query_res => {
+            res.status(200).end();
+            //res.render('user', data);
+        });
+});
 
 router.get('/subtract', (req, res) => {
     let id = req.query.id;
