@@ -23,6 +23,7 @@ const OrderHistoryDisplay = (props) => {
     </tr>
   )
   for (let i = 0; i < props.orderList.length; i++) {
+    if (i < 50) {
     const item = props.orderList[i];
     const itemDisplay = (
       <tr>
@@ -39,9 +40,10 @@ const OrderHistoryDisplay = (props) => {
         <td>{item.price}</td>
       </tr>)
       items.push(itemDisplay);
+    }
   }
   return (
-    <table>
+    <table className="OrderTable">
       {items}
     </table>
     )

@@ -26,7 +26,6 @@ class Inventory extends Component {
         <div className="Right">
         <InventoryTabs />
         <p className="App-intro">{this.state.apiResponse}</p>
-            <button onClick={this.getSummary}>Get Current Inventory</button>
         </div>
       </div>
     )

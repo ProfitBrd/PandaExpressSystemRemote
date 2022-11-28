@@ -9,22 +9,24 @@ function EmployeeTabs() {
   /* these are useState hooks */
   const [toggleState, setToggleState] = useState(1);
   const [type, setType] = useState('0');
-  const [changeID, setChangeID] = useState('0');
-  const [changeName, setChangeName] = useState('');
   const [changeType, setChangeType] = useState('f');
-
   const [RosterSummary, setRosterSummary] = useState('');
   const [userInput, setUserInput] = useState(''); 
-
-  const [selectedEmployee, setSelectedEmployee] = useState(''); 
 
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  const getSelected = () => {
+  const deleteEmployee = async() => {
     var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
-    setSelectedEmployee(selected);
+    console.log(selected);
+    const promise = fetch(`http://localhost:3000/roster/delete?${selected}`); 
+    const response = await promise;
+  }
+
+  const updateEmployee = () => {
+    var selected = document.getElementById("selectedEmployeeDiv").innerHTML;
+    console.log("update employee: ", selected, changeType);
   }
 
   useEffect(() => {
@@ -140,25 +142,18 @@ function EmployeeTabs() {
               </select>
               <p></p>
 
-              <label>Enter New Name: </label>
-              <input
-                type="text"
-                required
-                value={changeName}
-                onChange={(e) => setChangeName(e.target.value)}
-              />
-              <p></p>
-
-              <label>Enter New ID: </label>
-              <input
-                type="number"
-                required
-                value={changeID}
-                onChange={(e) => setChangeID(e.target.value)}
-              />
-              
-              <p></p>
-              <button className="SubmitButton" onClick={() => getSelected()} >Sumbit</button>
+              <button 
+                className="SubmitButton" 
+                id="delete" 
+                onClick={() => deleteEmployee()} >
+                Delete
+              </button>
+              <button 
+                className="SubmitButton" 
+                id="update" 
+                onClick={() => updateEmployee()} >
+                Update
+              </button>
         </div>
       </div>
     </div>
