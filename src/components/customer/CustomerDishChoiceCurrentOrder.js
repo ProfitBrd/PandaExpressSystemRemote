@@ -44,14 +44,8 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
       //If if is a whole order, delete everything inside
       if (mynewlistoforders[index][subIndex][subsubIndex] === 'bowl' || mynewlistoforders[index][subIndex][subsubIndex] === 'plate' || mynewlistoforders[index][subIndex][subsubIndex] === 'bigger plate'){
         mynewlistoforders.splice(index, 1);
-        // for (var i = 0; i < mynewlistoforders[index].length; i++){
-        //   for (var j = 0; j < mynewlistoforders[index][i].length; j++){
-        //     mynewlistoforders[index][i][j] = '';
-        //   }
-        // }
       }
       else{
-        // mynewlistoforders[index][subIndex][subsubIndex] = '';
         mynewlistoforders[index][subIndex].splice(subsubIndex, 1);
       }
       props.updateOrderCallback(mynewlistoforders);
@@ -79,10 +73,10 @@ var displayName = ['Honey Seasame Chicken', 'Orange Chicken', 'Black Pepper Angu
                       }
                       else if (subsubItems == "") {
                         return ( <span></span> ) //return nothing
-                      } 
+                      }
                       else {
                         return (
-                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li>{displayName[databaseName.indexOf(subsubItems)]}</li></span>
+                          <span onClick={() => {handlechange(index,subIndex,subsubIndex);}}><li class = "listItemInCurrentOrder">{displayName[databaseName.indexOf(subsubItems)]}</li></span>
                         )
                       }
                       //--------------------------------------------

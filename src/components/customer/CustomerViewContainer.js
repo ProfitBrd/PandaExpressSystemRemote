@@ -94,6 +94,22 @@ class CustomerViewContainer extends React.Component {
     }
 
     updateOrder(order) {
+        // //Alex code for persistance
+        // var test = [[[""]]];
+
+        // var bruh = localStorage.getItem('Hello');
+        // console.log("THIS IS THE VALUE OF BRUH: --->" + JSON.parse(bruh));
+
+        // var currentOrderFromLocalStorage = JSON.parse(localStorage.getItem("CurrentOrder"));
+        
+        // if (currentOrderFromLocalStorage == null) {
+        //     console.log("The list doesn't exist");
+        //     localStorage.setItem('CurrentOrder', JSON.stringify(test));
+        // }
+        // localStorage.setItem("CurrentOrder", JSON.stringify(order));
+        // //when reload, reset the order
+        // // delete from local storage as well as react component when removing things
+        // //--------Nathan Working Code
         console.log("trying to update w" + order);
         this.setState((prevState) => {
             return ({
