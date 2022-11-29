@@ -14,6 +14,16 @@ class CustomerViewContainer extends React.Component {
             price: "",
             screen: "container"
         };
+        //Alex code for persistance
+        var currentOrderFromLocalStorage = JSON.parse(localStorage.getItem("CurrentOrder"));
+        if (currentOrderFromLocalStorage == null) {
+            console.log("The list doesn't exist");
+            localStorage.setItem('CurrentOrder', JSON.stringify([[[]]]));
+        }
+        else{
+            this.state.currentOrder = currentOrderFromLocalStorage;
+            this.updatePrice(this.state.currentOrder); //This causes the "Warning: Can't call setState on a component that is not yet mounted."
+        }
     }
 
     callAPIAsyncGetPrice = async (dishId, idString) => {
@@ -94,22 +104,11 @@ class CustomerViewContainer extends React.Component {
     }
 
     updateOrder(order) {
-        // //Alex code for persistance
-        // var test = [[[""]]];
-
-        // var bruh = localStorage.getItem('Hello');
-        // console.log("THIS IS THE VALUE OF BRUH: --->" + JSON.parse(bruh));
-
-        // var currentOrderFromLocalStorage = JSON.parse(localStorage.getItem("CurrentOrder"));
-        
-        // if (currentOrderFromLocalStorage == null) {
-        //     console.log("The list doesn't exist");
-        //     localStorage.setItem('CurrentOrder', JSON.stringify(test));
-        // }
-        // localStorage.setItem("CurrentOrder", JSON.stringify(order));
-        // //when reload, reset the order
-        // // delete from local storage as well as react component when removing things
-        // //--------Nathan Working Code
+        //Alex code for persistance
+        localStorage.setItem("CurrentOrder", JSON.stringify(order));
+        //when reload, reset the order
+        // delete from local storage as well as react component when removing things
+        //--------Nathan Working Code
         console.log("trying to update w" + order);
         this.setState((prevState) => {
             return ({
