@@ -22,8 +22,11 @@ class CustomerViewContainer extends React.Component {
         }
         else{
             this.state.currentOrder = currentOrderFromLocalStorage;
-            // this.updatePrice(this.state.currentOrder); //This causes the "Warning: Can't call setState on a component that is not yet mounted."
         }
+    }
+
+    componentDidMount() {  
+        this.updatePrice(this.state.currentOrder);
     }
 
     callAPIAsyncGetPrice = async (dishId, idString) => {
